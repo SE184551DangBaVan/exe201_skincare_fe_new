@@ -102,7 +102,7 @@
     sans-serif;
 }
 
-* {
+body:has(.schedule-container) > * {
   box-sizing: border-box;
 }
 
