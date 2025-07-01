@@ -9,7 +9,7 @@ const PaymentCancel = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate("/payment-page");
+    navigate("/VIP-purchase");
   };
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const PaymentCancel = () => {
       {/* <audio autoPlay>
         <source src={holdUp} type='audio/mpeg'/>
       </audio> */}
-      <div className='error-text' > Payment Canceled<span>|</span> </div>
+      <div className='error-text' > Payment Cancelled<span>|</span> </div>
       <svg viewBox="200 150 400 300" preserveAspectRatio="xMidYMid meet" width="100%" height="50vmax">
         <defs>
           {/*outter ring*/}
@@ -67,7 +67,7 @@ const PaymentCancel = () => {
         <use xlinkHref="#dashedRing3" />
       </svg>
 
-      <div className='Unauthorized-text' > Canceled </div>
+      <div className='Unauthorized-text' > Cancelled </div>
 
       <div className='returnBtn' onClick={handleGoBack} > Go Back </div>
     </div>

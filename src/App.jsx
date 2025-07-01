@@ -196,14 +196,14 @@ function AppRoutes() {
               </ThemeProvider>
             }
           />
-          <Route
+          {/* <Route
             path="/payment-page"
             element={
               <ThemeProvider>
                 <PaymentPage />
               </ThemeProvider>
             }
-          />
+          /> */}
           <Route
             path="/payment-page/cancel"
             element={
@@ -234,7 +234,7 @@ function AppRoutes() {
           path="/product/:productId"
           element={
             <ThemeProvider>
-              <Navbar selected={""} index={2} /> <ProductPage /> <Footer />{" "}
+              <Navbar selected={"blog"} index={2} /> <ProductPage /> <Footer />{" "}
             </ThemeProvider>
           }
         />

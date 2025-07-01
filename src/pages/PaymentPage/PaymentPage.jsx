@@ -1,8 +1,6 @@
-import { ArrowBack, ArrowForward, CurrencyExchange } from '@mui/icons-material'
+import { ArrowForward, CurrencyExchange } from '@mui/icons-material'
 import './PaymentPage.css'
 import { useState } from 'react';
-import Spline from '@splinetool/react-spline';
-import Scene2 from "../../assets/scene (2).splinecode";
 import { useNavigate } from 'react-router-dom';
 import PaymentPopup from '../../components/PaymentPopup/PaymentPopup';
 import PayOSLogo from '../../assets/PayOSimage.png'
@@ -39,14 +37,12 @@ export default function PaymentPage() {
 
   return (
     <div className='paymentPage'>
-      <button className="back-btn" onClick={() => { navigate("/VIP-purchase"); } }>
-        <ArrowBack />
-      </button>
       <div className="paymentScene">
-        <Spline scene={Scene2} />
+        <div className='paymentPopupMask' onClick={() => { navigate("/VIP-purchase"); } }></div>
         { paymentPopup ? (
             <PaymentPopup />
-          ) : (<div className='payOSNavi'>
+          ) : (
+          <div className='payOSNavi' >
             <img src={PayOSLogo} alt='' className='payOSLogo' role="button"/>
             <button onClick={handlePayOS}>Thanh Toán <ArrowForward /></button>
           </div>)

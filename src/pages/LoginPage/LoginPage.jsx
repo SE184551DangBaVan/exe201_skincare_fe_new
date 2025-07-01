@@ -142,11 +142,11 @@ const LoginPage = ({accountAction}) => {
         <div className='line' />Hoặc đăng nhập bằng<div className='line' />
       </div>
       <div className='loginMethods' >
-        <button onClick={handleGoogleLogin} className='GoogleLoginButton'>
+        <button onClick={handleGoogleLogin} className='GoogleLoginButton' disabled='true'>
           <img src={GoogleIcon} alt='Google Icon' className='GGIcon' /> Google
         </button>
         <button className='FaceLoginButton'>
-          <img src={FaceIcon} alt='Face Icon' className='GGIcon' /> Facebook
+          <img src={FaceIcon} alt='Face Icon' className='GGIcon' disabled='true' /> Facebook
         </button>
       </div>
       <div className="account-toggle" style={{userSelect: 'none' }} >

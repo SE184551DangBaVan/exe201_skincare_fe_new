@@ -9,10 +9,10 @@ import ImageList3 from "../../assets/ImageList3.png";
 import ImageList4 from "../../assets/ImageList4.png";
 import { themeContext } from "../../Context";
 const SwipeList = () => {
-  const transition = { delay: 0, duration: 1, type: "slide" };
-  const transition2 = { delay: 0.2, duration: 1, type: "slide" };
-  const transition3 = { delay: 0.4, duration: 1, type: "slide" };
-  const transition4 = { delay: 0.6, duration: 1, type: "slide" };
+  const transition = { delay: 0, duration: 1, type: "spring" };
+  const transition2 = { delay: 0.2, duration: 1, type: "spring" };
+  const transition3 = { delay: 0.4, duration: 1, type: "spring" };
+  const transition4 = { delay: 0.6, duration: 1, type: "spring" };
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
   return (
@@ -27,7 +27,7 @@ const SwipeList = () => {
       >
         <SwiperSlide>
           <motion.img 
-            initial={{ top: "10%" }}
+            initial={{ top: "20%" }}
             whileInView={{ top: "0%" }}
             transition={transition} src={ImageList1} alt="" />
           <span>Cộng đồng</span>
@@ -35,7 +35,7 @@ const SwipeList = () => {
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
-            initial={{ top: "10%" }}
+            initial={{ top: "20%" }}
             whileInView={{ top: "0%" }}
             transition={transition2} src={ImageList2} alt="" />
           <span>Tư vấn AI</span>
@@ -43,7 +43,7 @@ const SwipeList = () => {
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
-            initial={{ top: "10%" }}
+            initial={{ top: "20%" }}
             whileInView={{ top: "0%" }}
             transition={transition3} src={ImageList3} alt="" />
           <span>Kho sản phẩm</span>
@@ -51,7 +51,7 @@ const SwipeList = () => {
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
-            initial={{ top: "10%" }}
+            initial={{ top: "20%" }}
             whileInView={{ top: "0%" }}
             transition={transition4} src={ImageList4} alt="" />
           <span>Cá nhân hóa</span>

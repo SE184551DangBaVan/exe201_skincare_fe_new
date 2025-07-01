@@ -94,7 +94,7 @@ export default function ProductPage() {
           <h1 className="product-ecom-title">{product.name}</h1>
           <div className="product-ecom-desc">{product.description}</div>
           <div className="product-ecom-price">
-            {product.price ? `${product.price.toFixed(2)} VND` : "Liên hệ"}
+            {product.price ? `${new Intl.NumberFormat('vi-VN').format(product.price)} VND` : "Liên hệ"}
           </div>
           <a
             className="product-ecom-addcart"

@@ -7,6 +7,9 @@ import Bottle from '../../assets/product_transparent_bottle.png'
 import Bottle1 from '../../assets/alex-ware-fWJt5zarh30-unsplash.png'
 import Bottle2 from '../../assets/lora-seis-k1tSnHMHHWk-unsplash.png'
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { showLoading, updateToast } from '../../utils/toastUtils';
+import axios from 'axios';
 
 export default function VIPPurchasePage() {
   const { scrollYProgress } = useScroll();
@@ -21,6 +24,30 @@ export default function VIPPurchasePage() {
   const transition = { duration: 2, type: "spring" };
     
   const navigate = useNavigate();
+
+  const handlePayOS = async () => {
+    const toastId = showLoading("Directing to PayOS...");
+
+    try {
+      const response = await axios.post(
+        'https://skincareapp.somee.com/SkinCare/vippayment/create-link',
+        {},
+        { withCredentials: true }
+      );
+
+      const checkoutUrl = response.data?.checkoutUrl;
+
+      if (checkoutUrl) {
+        updateToast(toastId, "success", "Redirecting to PayOS...");
+        window.location.href = checkoutUrl; // Redirect to the payment URL
+      } else {
+        updateToast(toastId, "error", "No checkout URL received.");
+      }
+    } catch (error) {
+      console.error("Error during PayOS redirect:", error);
+      updateToast(toastId, "error", "Failed to get PayOS link.");
+    }
+  };
 
   return (
     <div className='purchasePage'>
@@ -84,7 +111,7 @@ export default function VIPPurchasePage() {
               <Check /> <span>Hỗ trợ chăm sóc da 24/7 và tư vấn khẩn cấp</span>
             </div>
           </p>
-          <button className='joinServiceBtn' onClick={() => navigate('/payment-page')}>Tham gia ngay</button>
+          <button className='joinServiceBtn' onClick={handlePayOS}>Tham gia ngay</button>
         </div>
       </motion.div>
       <div className='canvas'>

@@ -21,7 +21,7 @@ body:has(.successPage) {
     font-size: 20px;
     position: absolute;
     transform: translateY(-100%);
-    margin: 20px; padding: 8px 16px 8px 120px;
+    margin: 20px; padding: 8px 16px 8px 220px;
     top: 5px;
     font-weight: 400;
     animation: success-float 0.8s forwards;
@@ -36,11 +36,11 @@ body:has(.successPage) {
 .successPage .error-text span {
     font-size: 24px;
     background-color: var(--bg-color);
-    transform: translateX(-100%);
-    padding-right: 100px;
+    transform: translateX(-90%);
+    padding-right: 200px;
     margin-top: -5px;
     opacity: 1;
-    animation: success-typewrite-float 0.8s forwards, success-typewrite-flash 1.5s ease-out;
+    animation: error-typewrite-float 0.8s forwards, error-typewrite-flash 1.5s ease-out;
     animation-iteration-count: 1, infinite;
     animation-delay: 2s, 3s;
 }

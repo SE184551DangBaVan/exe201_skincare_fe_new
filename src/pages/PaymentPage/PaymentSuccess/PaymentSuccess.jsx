@@ -9,7 +9,7 @@ const PaymentSuccess = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate("/payment-page");
+    navigate("/VIP-purchase");
   };
 
   useEffect(() => {

@@ -4,6 +4,8 @@ import './ChatBox.css';
 import chatIcon from '../../assets/images/icons/robo-idle-transparent.gif';
 import headerImage from '../../assets/images/Logo.png';
 import { FiberManualRecord, PsychologyAlt, Send } from '@mui/icons-material';
+import Spline from '@splinetool/react-spline';
+import Scene2 from "../../assets/scene (2).splinecode";
 
 const ChatBox = () => {
   const [isOpen, setIsOpen] = useState(false);

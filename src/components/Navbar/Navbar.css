@@ -76,6 +76,7 @@ body:has(.homePageApp.Dark ) .n-wrapper {
   justify-content: left;
   align-items: center;
   border-radius: 4px;
+  font-weight: 600;
   transition: all 0.6s ease;
 }
 .n-list > ul li a svg { position: relative; color: transparent; padding:6px; border-radius: 8px; background-color: transparent; transition: all 0.6s ease; }
@@ -89,8 +90,16 @@ body:has(.homePageApp.Dark ) .n-wrapper {
 
 .n-list #marker {
     position: absolute;
+    transform: translateY(0);
     transition: 0.5s;
     z-index: 1;
+}
+
+#marker.markerIndexNone::before {
+    transform: translateY(-500%);
+}
+#marker.markerIndexNone .sparkle {
+  display: none;
 }
 
 #marker::before {
@@ -144,7 +153,7 @@ body:has(.homePageApp.Dark ) .n-wrapper {
 	aspect-ratio: 1;
   --delay-step: 0.15;
   display: inline;
-	animation: sparkle 0.75s calc((var(--delay-step) * var(--d)) * 1s) infinite;
+	animation: sparkle 0.8s calc((var(--delay-step) * var(--d)) * 1s) infinite;
 }
 
 #marker::after {
@@ -160,7 +169,7 @@ body:has(.homePageApp.Dark ) .n-wrapper {
   transform: rotate(40deg);
   background-color: rgba(211, 211, 211, 0.8);
   filter: blur(20px);
-  animation: shinny 2s infinite;
+  animation: shinny 4s infinite;
 }
 /* #marker:hover::after {
   animation: shinny 2s infinite;
@@ -201,6 +210,10 @@ body:has(.homePageApp.Dark ) .n-wrapper {
     left: -100%;
   }
   20% {
+    opacity: 0;
+    left: -100%;
+  }
+  25% {
     opacity: 1;
   }
   80% {
