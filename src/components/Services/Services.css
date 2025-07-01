@@ -1,0 +1,39 @@
+.services {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    height: 600px;
+}
+
+.services canvas {
+    position: absolute;
+}
+
+.bannerImg {
+    z-index: 0;
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: 800px;
+}
+
+.s-title {
+    position: absolute;
+    margin-top: 150px;
+    font-size: 42px;
+    font-weight: 600;
+    color: white;
+    filter: drop-shadow(0 4px 4px #00000025)
+            drop-shadow(0 4px 4px #00000025)
+            drop-shadow(0 6px 50px #00000025);
+}
+
+.getStartedButton {
+    position: absolute;
+    z-index: 1;
+    margin-top: 240px;
+    width: 20%;
+    height: 60px;
+    color: var(--primary-text-color);
+    background-color: var(--bg-color);
+}

@@ -1,0 +1,458 @@
+.dashBoardPage {
+    width: 100vw;
+    height: 100vmax;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: end;
+    background-color: black;
+    color: var(--primary-text-color);
+    overflow: hidden;
+}
+
+.dashBoardContainer {
+    z-index: 10;
+    width: 80%;
+    margin: 20px 50px 0 0;
+    background-color: #edededc6;
+    color: var(--primary-text-color);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+}
+
+.dashBoardContainer .headerContainer {
+    width: 100%;
+    padding: 40px;
+}
+
+.dashBoardContainer .counterContainer {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.counterContainer .trackerBox {
+  position: relative;
+  z-index: 1;
+  width: 240px;
+  height: 80px;
+  background-color: #F7F7F7;
+  border: 0.5px solid #ccc;
+  border-top: 4px solid #ccc;
+  transition: all 0.5s ease;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.5);
+}
+
+.counterContainer .trackerBox::before {
+  content: '';
+  position: absolute;
+  top: 60%;
+  width: 20%;
+  height: 10px;
+  background-color: #999999;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.counterContainer .trackerBox:hover {
+  transform: scale(1.05) translateY(5px);
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.counterContainer .trackerBox:hover::before {
+  transform: scale(1.01) translateY(2.5px);
+}
+
+.trackerBox .folder {
+  position: absolute;
+  z-index: -1;
+  background-color: beige;
+  width: 90%;
+  min-height: 20px;
+  bottom: 102%;
+  margin: auto;
+  box-shadow: -2px -2px 5px rgba(0,0,0,0.2);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  transition: all 0.5s ease;
+}
+.trackerBox .folder::after {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  background-color: beige;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 10px;
+  margin: auto;
+  box-shadow: -2px -2px 5px rgba(0,0,0,0.2);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  transition: all 0.5s ease;
+}
+.trackerBox .folder svg {
+  position: absolute;
+  z-index: -3;
+  left: 30px;
+  top: 30px;
+  scale: 1.6;
+  color: gray;
+  border: 2px solid gray;
+}
+
+.counterContainer .trackerBox:hover .folder {
+  min-height: 100px;
+}
+
+.statistaContainer {
+    width: 95%;
+    padding: 0 0 30px 0;
+    margin: 20px 10px 20px 10px;
+    background-color: #F7F7F7;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    overflow: hidden;
+}
+.statistaContainer::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 32px;
+    border-radius: 12px;
+    border: 1px solid #c3c3c3;
+    z-index: -1;
+    width: 95%;
+    height: 375px;
+    background-color: #cacaca;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2),
+            0 0px 1px rgb(180, 180, 180);
+}
+
+.statistaContainer .statTitle {
+    max-width: 200px;
+    text-align: left;
+    margin: 10px 0 0 40px;
+    font-size: 20px; font-weight: 600;
+    color: black;
+}
+
+.statistaContainer .statSubTitle {
+    max-width: 200px;
+    text-align: left;
+    margin: 0 0 20px 40px;
+    font-size: 12px;
+    color: gray;
+}
+
+.statistaContainer .trackerContainer {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.statistaContainer .trackerContainer .salesTrackerBox {
+    position: relative;
+    z-index: 1;
+    width: 200px;
+    height: 200px;
+    background-color: #ffffff;
+    display: flex;
+    padding: 0 0 40px 0;
+    scale: 1;
+    border: 0.1px solid rgb(208, 208, 208);
+    border-bottom: 8px solid rgb(208, 208, 208);
+    transition: all 0.5s ease;
+    animation: boxIdle 8s ease infinite;
+}
+.statistaContainer .trackerContainer .salesTrackerBox::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -0.8px;
+    width: 18px;
+    height: 60%;
+    background-color: #FEB95A;
+    box-shadow: inset 6px 0 8px rgba(80, 80, 80, 0.6);
+    border-radius: 8px 0 0 8px;
+    transition: all 0.3s ease;
+}
+.statistaContainer .trackerContainer .salesTrackerContainer:nth-child(2) .salesTrackerBox::before { background-color: #00bca3; }
+.statistaContainer .trackerContainer .salesTrackerContainer:nth-child(3) .salesTrackerBox::before { background-color: #f972e9; }
+.statistaContainer .trackerContainer .salesTrackerContainer:last-child .salesTrackerBox::before { background-color: #0098e4; }
+
+.ambientShadow {
+    position: absolute;
+    z-index: 0;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    padding: 0 0 40px 0;
+    scale: 1;
+}
+.ambientShadow::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 240px;
+    scale: 0.7;
+    filter: hue-rotate(180deg);
+    transition: all 0.4s ease;
+    animation: lightMorph 8s ease infinite;
+}
+
+.statistaContainer .trackerContainer .salesTrackerContainer:nth-child(2) .ambientShadow::after { filter: hue-rotate(270deg); }
+.statistaContainer .trackerContainer .salesTrackerContainer:nth-child(3) .ambientShadow::after { filter: hue-rotate(100deg); }
+.statistaContainer .trackerContainer .salesTrackerContainer:last-child .ambientShadow::after { filter: hue-rotate(10deg); }
+
+.statistaContainer .trackerContainer .salesTrackerBox:hover {
+    scale: 1.01;
+    transition: all 0.3s ease;
+}
+/* .statistaContainer .trackerContainer .salesTrackerContainer:hover .ambientShadow::after {
+    scale: 0.7;
+    transition: all 0.3s ease;
+    animation: none;
+} */
+
+.statistaContainer .trackerContainer .salesTrackerContainer:first-child .salesTrackerBox svg {
+    margin: 30px 0 50px 20px;
+    color: #FEB95A;
+    align-self: baseline;
+    scale: 1.5;
+}
+.statistaContainer .trackerContainer .salesTrackerContainer:nth-child(2) .salesTrackerBox svg {
+    margin: 30px 0 50px 20px;
+    color: #00bca3;
+    align-self: baseline;
+    scale: 1.5;
+}
+.statistaContainer .trackerContainer .salesTrackerContainer:nth-child(3) .salesTrackerBox svg {
+    margin: 30px 0 50px 20px;
+    color: #f972e9;
+    align-self: baseline;
+    scale: 1.5;
+}
+.statistaContainer .trackerContainer .salesTrackerContainer:last-child .salesTrackerBox svg {
+    margin: 30px 0 50px 20px;
+    color: #0098e4;
+    align-self: baseline;
+    scale: 1.5;
+}
+
+.statistaContainer .trackerContainer .salesTrackerContainer:first-child .salesTrackerBox p:last-child {
+    margin-top: -15px;
+    color: #FEB95A;
+}
+.statistaContainer .trackerContainer .salesTrackerContainer:nth-child(2) .salesTrackerBox p:last-child {
+    margin-top: -15px;
+    color: #00bca3;
+}
+.statistaContainer .trackerContainer .salesTrackerContainer:nth-child(3) .salesTrackerBox p:last-child {
+    margin-top: -15px;
+    color: #f972e9;
+}
+.statistaContainer .trackerContainer .salesTrackerContainer:last-child .salesTrackerBox p:last-child {
+    margin-top: -15px;
+    color: #0098e4;
+}
+
+.chartContainer {
+    width: 30%;
+    height: 300px;
+    padding: 0 0 30px 0;
+    margin: 20px 10px 20px 20px;
+    background-color: #F7F7F7;
+    border-radius: 12px;
+    align-self: baseline;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+.chartContainer::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 1.6%;
+    width: 20px;
+    height: 60%;
+    background-color: #edededc6;
+    box-shadow: inset -2px 0 5px rgba(0, 0, 0, 0.6);
+    border-radius: 0 8px 8px 0;
+    transition: all 0.3s ease;
+}
+
+.chartContainer .chartTitle {
+    max-width: 200px;
+    text-align: left;
+    margin: 10px 0 0 40px;
+    font-size: 20px; font-weight: 600;
+}
+.chartContainer .chartSubTitle {
+    max-width: 200px;
+    text-align: left;
+    margin: 0 0 0 40px;
+    font-size: 12px; font-weight: 400;
+    color: gray;
+}
+
+.progressGaugeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progressGaugeContainer > * {
+    position: absolute;
+}
+
+.progressGaugeContainer .valuePercentage {
+    color: #71b9fd;
+    font-size: 38px;
+    font-weight: 700;
+    padding-top: 40px;
+}
+
+.dashBoardContainer .progressGaugeContainer .sc-kAFUCS.cWJcMT .MuiGauge-referenceArc-etyMIK {
+    fill: #71b9fd;
+}
+
+.dashBoardContainer .progressGaugeContainer .sc-kAFUCS.cWJcMT path:first-child {
+    fill: #dbdbdb;
+}
+
+.lineChartContainer {
+    width: 65%;
+    height: 340px;
+    padding: 0;
+    margin: 0 0 0 10px;
+    background-color: #0000000f;
+    border-radius: 12px;
+    align-self: baseline;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.lineChartContainer .chartTitle {
+    max-width: 200px;
+    text-align: left;
+    margin: 10px 0 0 40px;
+    font-size: 20px; font-weight: 600;
+}
+
+.dashBoardContainer:has(.lineChartContainer) {
+    flex-direction: row;
+}
+
+.lineChartBox {
+    width: 90%;
+    height: 90%;
+}
+
+.lineChartBox .lineChart .MuiLineElement-root.MuiLineElement-series-auto-generated-id-0 {
+    stroke: #28AEF3;
+    filter: drop-shadow(0 2px 2px rgb(40, 174, 243, 1))
+            drop-shadow(0 8px 6px rgba(40, 174, 243, 0.5))
+            drop-shadow(0 14px 12px rgba(40, 174, 243, 0.4));
+}
+
+.lineChartBox .lineChart .MuiLineElement-root.MuiLineElement-series-auto-generated-id-1 {
+    stroke: #00e6c7;
+    filter: drop-shadow(0 2px 2px rgba(0, 230, 199, 1))
+            drop-shadow(0 8px 6px rgba(0, 230, 199, 0.5))
+            drop-shadow(0 14px 12px rgba(0, 230, 199, 0.4));
+}
+
+.lineChartBox .lineChart g circle {
+    display: none;
+}
+.lineChartBox .lineChart g line {
+    display: none;
+}
+
+@keyframes boxIdle {
+    0% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes lightMorph {
+    0% {
+        scale: 0.7;
+        box-shadow: 0 30px 20px rgba(100, 149, 237, 0.2),
+            0 30px 40px rgba(100, 149, 237, 0.4),
+            0 30px 60px rgba(100, 149, 237, 0.6),
+            0 30px 80px rgba(70, 130, 180, 0.8),
+            0 30px 100px rgba(65, 105, 225, 1);
+    }
+    50% {
+        scale: 0.8;
+        box-shadow: 0 30px 20px rgba(100, 149, 237, 0.2),
+            0 30px 40px rgba(100, 149, 237, 0.4),
+            0 30px 60px rgba(100, 149, 237, 0.6),
+            0 30px 80px rgba(70, 130, 180, 0.8),
+            0 30px 100px rgba(65, 105, 225, 1);
+    }
+    100% {
+        scale: 0.7;
+        box-shadow: 0 30px 20px rgba(100, 149, 237, 0.2),
+            0 30px 40px rgba(100, 149, 237, 0.4),
+            0 30px 60px rgba(100, 149, 237, 0.6),
+            0 30px 80px rgba(70, 130, 180, 0.8),
+            0 30px 100px rgba(65, 105, 225, 1);
+    }
+}
+
+.misc2 {
+  width: 100px;
+  position: fixed;
+  top: 0;
+  right: 600px;
+  filter: blur(2px);
+  opacity: 0.8;
+  animation: rotateRight 12s linear infinite;
+}
+
+.misc3 {
+  width: 100px;
+  position: fixed;
+  bottom: 150px;
+  left: 200px;
+  filter: blur(1px);
+  opacity: 0.6;
+  animation: rotateLeft 8s linear infinite;
+}
+
+@keyframes constantRotateRight {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes constantRotateLeft {
+  to {
+    transform: rotate(-360deg);
+  }
+}

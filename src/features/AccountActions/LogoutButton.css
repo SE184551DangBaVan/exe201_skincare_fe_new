@@ -1,0 +1,16 @@
+.logout-Btn {
+    background-color: transparent;
+    color: var(--primary-text-color);
+    font-weight: 700;
+    border: 2px solid var(--primary-text-color);
+    padding: 10px 12px;
+    transition: all 0.5s ease;
+}
+
+.logout-Btn:hover {
+    background-color: var(--primary-text-color);
+    color: var(--bg-color);
+    font-weight: 700;
+    border: 2px solid var(--primary-text-color);
+    transition: all 0.3s ease;
+}

@@ -1,0 +1,132 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  overflow-x: hidden;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --bg-color: #ffff;
+  --secondary-bg-color: #fff5f5f5;
+  --foreground-color: #ffffff;
+  --primary-text-color: #000000;
+  --secondary-text-color: #808080;
+  --side-menu-hover-color: #0000001a;
+  --side-menu-active-color: #cccccc9d;
+  --border-color: #404040;
+
+  --btn-background-color1: yellow;
+  --btn-background-color2: greenyellow;
+  --btn-background-color3: #1574f9;
+  --btn-background-color4: orange;
+  --btn-background-color5: #f539ff;
+
+  --yellow: #f5c32c;
+  --orange: #fca61f;
+  --black: #ccc;
+  --gray: #788097;
+  --blue: #a9dfd8;
+  --blueCard: #ddf8fe;
+  --purple: rgb(238 210 255);
+  --boxShadow: 0px 19px 60px rgb(0 0 0 / 8%);
+  --orangeCard: rgba(252, 166, 31, 0.45);
+  --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
+
+  /*Chat box*/
+  --primaryGradient: linear-gradient(93.12deg, #e8a689 0.52%, #de8764 100%);
+  --secondaryGradient: linear-gradient(
+    268.91deg,
+    #e8a689 -2.14%,
+    #de8764 99.69%
+  );
+  --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
+  --light: 300;
+  --regular: 400;
+  --semiBold: 600;
+  --extraLight: 300;
+  --italic: 300;
+  --primary: #581b98;
+
+  --accent-color: #3498db;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --gradient-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+[data-theme="dark"] {
+  --bg-color: #0f0f0f;
+  --secondary-bg-color: #121212;
+  --foreground-color: #272727;
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #adadad;
+  --side-menu-hover-color: #dddddd52;
+  --side-menu-active-color: #4444449d;
+  --border-color: #424242;
+
+  --btn-background-color1: yellow;
+  --btn-background-color2: greenyellow;
+  --btn-background-color3: #1574f9;
+  --btn-background-color4: orange;
+  --btn-background-color5: #f539ff;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

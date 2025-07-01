@@ -1,0 +1,334 @@
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    color: var(--primary-text-color);
+    background-color: var(--bg-color);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.MuiBox-root {
+    padding: 100px 200px;
+    width: 20%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+}
+
+.usernamePassLoginBox .loginLable {
+    display: flex;
+    gap: 10px;
+    width: 400px;
+    font-size: 28px;
+    font-weight: 700;
+    flex-direction: column;
+}
+.MuiBox-root.usernamePassLoginBox {
+    padding: 20px 20px;
+    width: 40%; height: 60%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+}
+.usernamePassLoginBox form {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.usernamePassLoginBox .input-field {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.usernamePassLoginBox .input-field input {
+    display: flex;
+    align-items: end;
+    background-color: white;
+    box-shadow: 0 5px 10px #55555580;
+    color: black;
+    padding-left: 20px; margin-left: 10px;
+    font-weight: 400;
+    width: 90%;
+    height: 40px;
+    outline: none; border: 2px solid black;
+    border-radius: 12px;
+}
+.usernamePassLoginBox .input-field .passInput {
+    display: flex;
+    align-items: end;
+    width: 100%;
+    height: 40px;
+}
+.usernamePassLoginBox .input-field input::placeholder { user-select: none; padding-left: 10px; transform: translateX(0%); transition: transform 0.4s ease;}
+.usernamePassLoginBox .input-field input:focus-within::placeholder { transform: translateX(-100%); transition: transform 0.3s ease;}
+
+.usernamePassLoginBox .input-field label { display: flex; gap: 5px; font-size: 16px; color: #686868; font-weight: 400;}
+
+.forgot-password {
+    cursor: pointer; 
+    color: #E3611B; 
+    font-size: 14px;
+}
+
+.signinBox .signinLable {
+    display: flex;
+    gap: 10px;
+    width: 400px;
+    font-size: 28px;
+    font-weight: 700;
+    flex-direction: column;
+}
+.signinBox .signinLable span {
+    line-height: 16px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.MuiBox-root.signinBox {
+    padding: 20px 20px;
+    width: 40%; height: 60%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+}
+.signinBox .input-field {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.signinBox .input-field input {
+    display: flex;
+    align-items: end;
+    background-color: white;
+    box-shadow: 0 5px 10px #55555580;
+    color: black;
+    padding-left: 20px; margin-left: 10px;
+    font-weight: 400;
+    width: 90%;
+    height: 40px;
+    outline: none; border: 2px solid black;
+    border-radius: 12px;
+}
+.signinBox .input-field .passInput {
+    display: flex;
+    align-items: end;
+    width: 100%;
+    height: 40px;
+}
+.signinBox .input-field input::placeholder { user-select: none; padding-left: 10px; transform: translateX(0%); transition: transform 0.4s ease;}
+.signinBox .input-field input:focus-within::placeholder { transform: translateX(-100%); transition: transform 0.3s ease;}
+
+.signinBox .input-field label { display: flex; gap: 5px; font-size: 16px; color: #686868; font-weight: 400;}
+
+
+.account-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 40%;
+    margin-top: 20px;
+}
+.account-toggle .line {
+    width: 110px;
+    height: 1.5px;
+    background-color: black;
+}
+.account-toggle span:hover {
+    text-decoration: underline;
+    color: gray;
+}
+.account-seperation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 40%;
+    margin: -5px 0 30px 0;
+}
+.account-seperation .line {
+    width: 170px;
+    height: 1.5px;
+    background-color: black;
+}
+
+.loginLable {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.loginButton {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 18px;
+    width: 96%;
+    cursor: pointer;
+    background-color: #EAC2AD;
+    color: #000;
+    border: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 4px;
+    transition: all 0.5s ease;
+}
+.loginMethods {
+    width: 450px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+.GoogleLoginButton {
+    width: 200px; height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 12px;
+    background-color: white;
+    color: black;
+    padding: 5px 20px;
+    border: 1px black solid;
+    transition: all 0.4s ease;
+}
+.GoogleLoginButton:hover {
+    background-color: #ececec;
+    color: #555;
+    border: 1px black solid;
+    transition: all 0.3s ease;
+}
+.GoogleLoginButton .GGIcon{
+    scale: 0.8;
+}
+
+.FaceLoginButton {
+    width: 200px; height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 12px;
+    background-color: white;
+    color: black;
+    padding: 5px 20px;
+    border: 1px black solid;
+    transition: all 0.4s ease;
+}
+.FaceLoginButton:hover {
+    background-color: #ececec;
+    color: #555;
+    border: 1px black solid;
+    transition: all 0.3s ease;
+}
+.FaceLoginButton .GGIcon{
+    scale: 0.6;
+}
+
+.loginButton:hover{
+    padding-left: 20px;
+    background-color: var(--bg-color);
+    outline: 2px #333 solid;
+    transition: all 0.3s ease;
+}
+
+.signinBox,
+.usernamePassLoginBox {
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+}
+
+.signinBox.away {
+    position: absolute;
+    transform: translateY(200%);
+    transition: transform 0.4s ease;
+}
+.usernamePassLoginBox.away {
+    position: absolute;
+    transform: translateY(-200%);
+    transition: transform 0.4s ease;
+}
+
+.passToggle {
+    border-left: 2px solid #ffffff99;
+    padding: 5px;
+    display: flex;
+    position: absolute;
+    margin-bottom: 6px;
+    right: 100px;
+}
+.passToggle.show { flex-direction: row-reverse; }
+.passToggle.hide { flex-direction: row; }
+
+.passToggle svg {
+    opacity: 0;
+}
+
+.passToggle svg.show {
+    opacity: 1;
+    color: #333;
+}
+
+.passToggle svg.hide {
+    opacity: 1;
+    color: #555;
+}
+
+.back-btn {
+    padding: 4px 15px 0 14px;
+    position: absolute;
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
+    border: 1px transparent solid; transition: all 0.3s ease;
+    top: 20px;
+    left: 40px;
+}
+.back-btn:hover {
+    border: 1px #333 solid;
+    transform: translateX(-2px);
+    box-shadow: 2px 1px 5px #555;
+}
+
+.error-message {
+    position: absolute;
+    z-index: 2;
+    width: 70%;
+    border-radius: 8px;
+    background-color: red;
+    color: white;
+    transform: translateY(100px);
+    opacity: 0;
+    animation: 0.3s errorPop forwards;
+}
+
+@keyframes errorPop {
+    to{
+        transform: translateY(90px);
+        opacity: 1;
+    }
+}

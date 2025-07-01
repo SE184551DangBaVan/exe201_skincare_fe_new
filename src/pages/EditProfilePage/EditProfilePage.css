@@ -1,0 +1,80 @@
+.detailItem {
+  display: flex;
+  align-items: center;   
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.statusBadge {
+  position: absolute;
+  right: 14px;   /* Ảnh avatar 120px, badge lệch ra sát mép phải */
+  bottom: 10px;  /* Sát cạnh dưới, tăng giảm cho vừa ý */
+  width: 22px;
+  height: 22px;
+  background: #3dda73;
+  border: 2.5px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 6px #c9f5d4a0;
+}
+.detailIcon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  color: #7c68ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detailContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.detailLabel {
+  font-size: 13.5px;
+  color: #a4a7b7;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.editInput {
+  width: 100%;
+  font-weight: 700;
+  font-size: 18px;
+  color: #2b3247;
+  background: none;
+  border: none;
+  outline: none;
+  margin-bottom: 0;
+  padding: 4px 0 4px 0;
+}
+
+.editInput:focus {
+  background: #f4f5fd;
+  border-radius: 7px;
+}
+
+.editProfilePasswordBox,
+.detailContent > div[style*="display: flex"] {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.editProfilePasswordBox input {
+  flex: 1;
+}
+
+.editProfileEye {
+  margin-left: 8px;
+  cursor: pointer;
+  color: #9fa3b7;
+  transition: color 0.17s;
+}
+.editProfileEye:active, .editProfileEye:focus {
+  color: #866efb;
+}

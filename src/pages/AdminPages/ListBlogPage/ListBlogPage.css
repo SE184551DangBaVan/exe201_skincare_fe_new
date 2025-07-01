@@ -1,0 +1,169 @@
+.listBlogPage-admin {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: none;
+  padding-left: 400px;
+}
+body:has(.adminBlogListContainer) .bgImg { left: 0; }
+.adminBlogListContainer {
+  z-index: 2;
+  margin-top: 50px;
+  padding: 32px 30px 36px 30px;
+  background: rgba(255,255,255,0.93);
+  box-shadow: 0 3px 22px 0 rgba(60,60,100,0.12);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 900px;
+  min-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+.adminBlogTitle {
+  font-size: 2.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  color: #1c2a3a;
+  text-align: center;
+}
+.adminBlogList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.adminBlogListItem {
+  display: flex;
+  gap: 25px;
+  background: rgba(245,250,250,0.97);
+  border-radius: 16px;
+  padding: 18px 22px;
+  box-shadow: 0 2px 10px 0 rgba(60,60,100,0.07);
+  align-items: flex-start;
+}
+.adminBlogListImageBox {
+  width: 120px; min-width: 120px; height: 120px;
+  border-radius: 8px; overflow: hidden;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid #f2f2f2;
+}
+.adminBlogListImage {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.adminBlogListContent {
+  flex: 1;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.adminBlogListTitle {
+  font-size: 1.25rem; font-weight: 600; color: #2596be;
+  margin-bottom: 4px;
+}
+.adminBlogListDesc {
+  color: #2e3640; font-size: 1.06rem; margin-bottom: 4px;
+  line-height: 1.4;
+}
+.adminBlogListLink {
+  color: #3c82ef;
+  font-size: 1.03rem;
+  text-decoration: underline;
+  word-break: break-all;
+  margin-bottom: 2px;
+}
+.adminBlogListMeta {
+  font-size: 0.96rem; color: #777;
+  display: flex; gap: 17px; margin-bottom: 8px;
+}
+.adminBlogListProduct {
+  font-weight: 500; color: #1c2a3a;
+}
+.adminBlogListActions {
+  display: flex; gap: 12px;
+}
+.adminBlogListBtn {
+  padding: 7px 22px;
+  font-size: 1rem;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 4px;
+  transition: background 0.14s;
+}
+.adminBlogListEdit { background: #d2f7ff; color: #1783a6; }
+.adminBlogListEdit:hover { background: #91e2f9; }
+.adminBlogListDelete { background: #ffebe9; color: #e23a39; }
+.adminBlogListDelete:hover { background: #ffc4c1; }
+.adminBlogNoData, .adminBlogLoading {
+  text-align: center; color: #aaa; margin: 35px 0 20px 0;
+  font-size: 1.2rem;
+}
+.adminBlogModal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.adminBlogModalContent { 
+  color: var(--primary-text-color);
+  background: var(--bg-color);
+  padding: 24px 32px;
+  border-radius: 8px;
+  width: 600px;  /* hoặc 700px nếu muốn rộng hơn */
+  max-width: 90%; /* đảm bảo responsive */
+  box-shadow: 0 0 16px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* tăng khoảng cách giữa các phần tử */
+}
+
+/* Input và textarea trong form */
+.adminBlogModalContent input,
+.adminBlogModalContent textarea {
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-text-color);
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 2px solid #ccc; outline: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: all 0.5s ease;
+}
+
+.adminBlogModalContent input:focus-within,
+.adminBlogModalContent textarea:focus-within {
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-text-color);
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 2px solid aqua;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.adminBlogModalContent button {
+  padding: 8px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+.adminBlogModalContent button:first-child {
+  background: #4caf50;
+  color: #fff;
+}
+
+.adminBlogModalContent button:last-child {
+  background: #eee;
+  color: #333;
+}

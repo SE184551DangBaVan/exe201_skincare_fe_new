@@ -1,0 +1,52 @@
+.contactUsForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+    width: 100%; max-width: 500px;
+    height: 100%;
+    padding: 80px 60px;
+}
+
+.contactUsForm .contactUsTitle {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.contactUsForm input,
+.contactUsForm textarea {
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    border: 0.5px solid #ccc;
+    padding: 10px;
+    transition: all 0.5s ease;
+}
+
+.contactUsForm input {
+    height: 20px;
+}
+.contactUsForm textarea {
+    height: 100px;
+    max-height: 150px;
+    max-width: 500px;
+}
+
+.contactUsForm input:focus-within,
+.contactUsForm textarea:focus-within {
+    outline: none;
+    border-color: lightblue;
+    transition: all 0.3s ease;
+}
+
+.contactUsForm input::placeholder,
+.contactUsForm textarea::placeholder {
+    transform: translateX(0);
+    transition: transform 0.5s ease;
+}
+
+.contactUsForm input:focus-within::placeholder,
+.contactUsForm textarea:focus-within::placeholder {
+    transform: translateX(-150%);
+    transition: transform 0.8s ease;
+}

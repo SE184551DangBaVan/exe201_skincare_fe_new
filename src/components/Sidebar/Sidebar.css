@@ -1,0 +1,215 @@
+.s-wrapper {
+  background-color: #e0e0e0;
+  user-select: none;
+}
+body:has(.homePageApp.Dark ) .s-wrapper {
+  background-color: #333;
+}
+
+.s-wrapper {
+  width: 15vw;
+  height: 100%;
+  display: flex;
+  border-radius: 8px;
+  flex-direction: column;
+  z-index: 98;
+  left: 0;
+  top: 0;
+}
+.s-top {
+  flex: 0.5;
+  align-items: center;
+  justify-content: left;
+  display: flex;
+  gap: 1rem;
+}
+.skincareLogo {
+  width: 60px;
+  transform: translateX(25px);
+}
+
+.s-name {
+  font-size: 28px;
+  font-weight: 600;
+  text-shadow: 5px 2px 5px #55555580;
+  color: black;
+}
+.s-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 400;
+}
+.s-bottom button {
+  margin-top: 80px;
+}
+
+.s-list {
+  display: flex;
+  width: 100%;
+}
+
+.s-list .selected {
+  background-color: var(--blue);
+  color: var(--primary-text-color);
+  gap: 8px;
+  padding: 6px 0 0 20px; border-radius: 8px;
+  pointer-events: none; user-select: none;
+}
+.s-list > ul {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+}
+.s-list > ul li {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  padding-left: 20px;
+}
+.s-list > ul li a{
+  display: flex;
+  justify-content: left;
+  gap: 5px;
+  padding-left: 20px;
+  min-width: 75%; max-width: 75%;
+  color: var(--secondary-text-color);
+  border-radius: 4px;
+  transition: all 0.6s ease;
+}
+
+.s-list > ul li a:hover {
+  color: rgb(108, 193, 246);
+  cursor: pointer;
+  transition: all 0.3s ease;
+} 
+.s-list > ul li a:hover svg {
+  background-color: rgb(108, 193, 246);
+  color: rgb(108, 193, 246);
+  transition: all 0.3s ease;
+}
+
+.s-list > ul li a svg {
+  background-color: var(--secondary-text-color);
+  color: var(--secondary-text-color);
+  border-radius: 50%;
+  transform: rotateZ(-30deg) scale(0.6);
+  transition: all 0.5s ease;
+}
+
+.s-list > ul li a svg.morbinTime {
+  color: var(--primary-text-color);
+  background-color: transparent;
+  border-radius: 10px;
+  transform: rotateZ(0deg) scale(1);
+}
+
+body:has(.s-wrapper) .mask {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #5555556a;
+}
+
+body:has(.s-wrapper) .bgImg {
+    position: fixed;
+    filter: blur(8px);
+    width: 100%;
+    height: 100vh;
+}
+body:has(.s-wrapper) .bgImg img {
+    width: 150%;
+}
+
+.sidebar-text {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #757575;
+  padding-left: 20px;
+}
+.sidebar-text:hover {
+  color: #45a8e6;
+}
+.sidebar-text:hover svg {
+  background-color: rgb(108, 193, 246);
+  color: rgb(108, 193, 246);
+  transition: all 0.3s ease;
+}
+.sidebar-text svg {
+  margin-right: 10px;
+  background-color: var(--secondary-text-color);
+  color: var(--secondary-text-color);
+  border-radius: 50%;
+  transform: rotateZ(-30deg) scale(0.6);
+  transition: all 0.5s ease;
+}
+.sidebar-text svg.morbinTime {
+  color: var(--primary-text-color);
+  background-color: transparent;
+  border-radius: 10px;
+  transform: rotateZ(0deg) scale(1);
+}
+
+.sideBarList {
+  position: absolute;
+  width: 160px;
+  height: 150px;
+  left: 20%;
+  opacity: 0;
+  padding: 0 20px;
+  border-radius: 20px;
+  transform: translateY(40%);
+  background-color: #e0e0e0;
+  animation: appearList 0.3s forwards;
+}
+.sidebar-dropdown {
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin-top: 25px;
+  gap: 20px;
+}
+.sidebar-dropdown-item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 1.03rem;
+  background-color: #ccc;
+  color: #727272;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.14s, background 0.13s;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box; 
+}
+.sidebar-dropdown-item:hover,
+.sidebar-dropdown-item.active {
+  background: #e8fcfc;
+  color: #249ac6;
+}
+
+@keyframes appearList {
+  to {
+    opacity: 1;
+    left: 101%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .s-list {
+    display: none;
+  }
+}
