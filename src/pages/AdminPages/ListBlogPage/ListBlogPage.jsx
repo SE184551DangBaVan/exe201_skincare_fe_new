@@ -129,7 +129,7 @@ const handleEdit = (id) => {
       >
         <h2 className="adminBlogTitle">Quản lí Blog</h2>
         {loading ? (
-          <div className="adminBlogLoading">Đanm tải...</div>
+          <div className="adminBlogLoading">Đang tải...</div>
         ) : blogs.length === 0 ? (
           <div className="adminBlogNoData">Không có Blog.</div>
         ) : (

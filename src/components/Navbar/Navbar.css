@@ -25,19 +25,20 @@ body:has(.homePageApp.Dark ) .n-wrapper {
   gap: 2rem;
 }
 .skincareLogo {
-  width: 120px;
+  width: 120px !important;
 }
 
 .n-name {
   position: absolute;
-  text-align: right;
-  margin-top: 20px;
-  margin-left: 75px;
+  text-align: left;
+  margin-top: 40px;
+  margin-left: 130px;
   font-size: 36px;
   font-weight: 800;
+  line-height: 30px;
   font-style: italic;
   font-family: "Apple Chancery, cursive";
-  color: #777777;
+  color: #006739;
 }
 .n-right {
   flex: 1;
@@ -50,7 +51,7 @@ body:has(.homePageApp.Dark ) .n-wrapper {
 .n-list {
   flex: 1;
   font-size: 15px;
-  font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 .n-list .selected {
@@ -70,7 +71,7 @@ body:has(.homePageApp.Dark ) .n-wrapper {
   color: var(--primary-text-color);
   display: flex;
   min-width: 50px;
-  padding: 5px 10px 0 5px;
+  padding: 8px 10px 0 5px;
   gap: 5px;
   justify-content: left;
   align-items: center;

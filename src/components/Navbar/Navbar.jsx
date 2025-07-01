@@ -98,7 +98,7 @@ const navbar = ({ selected, index }) => {
       {/* left */}
       <div className="n-left">
         <img className="skincareLogo" src={Logo} />
-        <div className="n-name">kincare</div>
+        <div className="n-name">kin<br/>ense</div>
       </div>
       {/* right */}
       <div className="n-right">
