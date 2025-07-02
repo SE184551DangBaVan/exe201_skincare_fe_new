@@ -44,6 +44,8 @@
     padding-top: 50px;
     height: 0px;
     flex-wrap: wrap;
+    filter: blur(0);
+    transition: filter 0.6s ease;
 }
 .bannerHeader h1{
     font-family: "Karantina", system-ui;
@@ -80,7 +82,7 @@
 }
 .product{
     position: absolute;
-    left: 30%;
+    left: 26%;
     bottom: 120px;
     z-index: 2;
     width: 500px;
@@ -113,8 +115,8 @@
     opacity: 0;
 }
 .services:has(.getStartedButton:hover) .product{
-    bottom: 260px;
-    rotate: 10deg;
+    bottom: 180px;
+    rotate: 5deg;
 }
 .services:has(.getStartedButton:hover) .product .soda:nth-child(2){
     opacity: 1;
@@ -134,7 +136,7 @@
 .rock img:nth-child(1){
     position: absolute;
     height: 170px;
-    left: 37%;
+    left: 34%;
     bottom: 120px;
     transition: 0.7s;
     z-index: 1;
@@ -146,7 +148,7 @@
     left: 30%;
     bottom: 150px;
     transition: 0.7s;
-    filter: drop-shadow(0 -2px 5px #333);
+    filter: drop-shadow(0 -2px 5px #333) blur(0);
 }
 .rock img:nth-child(3){
     position: absolute;
@@ -154,16 +156,23 @@
     right: 28%;
     bottom: 80px;
     transition: 0.7s;
-    filter: drop-shadow(0 -2px 5px #333);
+    filter: drop-shadow(0 -2px 5px #333) blur(0);
 }
+
+.services:has(.getStartedButton:hover) .bannerHeader {
+    filter: blur(5px);
+}
+
 .services:has(.getStartedButton:hover) .banner .rock img:nth-child(1){
     transform: translateY(50px);
 }
 .services:has(.getStartedButton:hover) .banner .rock img:nth-child(2){
     transform: translateX(-100px) translateY(100px);
+    filter: drop-shadow(0 -2px 5px #333) blur(3px);
 }
 .services:has(.getStartedButton:hover) .banner .rock img:nth-child(3){
     transform: translateX(100px) translateY(100px);
+    filter: drop-shadow(0 -2px 5px #333) blur(3px);
 }
 @media screen and (max-width: 1023px) {
     
