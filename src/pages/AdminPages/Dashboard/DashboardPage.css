@@ -158,6 +158,17 @@
 .statistaContainer .trackerContainer .salesTrackerContainer:nth-child(3) .salesTrackerBox::before { background-color: #f972e9; }
 .statistaContainer .trackerContainer .salesTrackerContainer:last-child .salesTrackerBox::before { background-color: #0098e4; }
 
+.statistaContainer .trackerContainer .salesTrackerBox .unavailable {
+    font-size: 18px;
+    width: 100%;
+    position: absolute;
+    transform: translate(0, 40px) rotate(-20deg);
+    background-color: white;
+    color: gray !important;
+    padding: 5px 10px 5px 10px;
+    border: 2px solid gray;
+}
+
 .ambientShadow {
     position: absolute;
     z-index: 0;

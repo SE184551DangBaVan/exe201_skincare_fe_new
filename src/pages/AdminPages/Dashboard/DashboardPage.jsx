@@ -190,10 +190,10 @@ export default function DashboardPage() {
                 <span className="statSubTitle">Tổng quan doanh số</span>
                 
                 <div className="trackerContainer" >
-                    <SalesTracker icon={<BarChart />} number="00" title="Total Sales" profit="currently unavailable" />
-                    <SalesTracker icon={<ListAlt />} number={dailyLogin} title="Active User" profit={`${dailyLogin} Logins in the last 24h`} />
-                    <SalesTracker icon={<LocalMall />} number="00" title="Product Sold" profit="currently unavailable" />
-                    <SalesTracker icon={<PersonOutline />} number={monthlyRegister} title="New Customer" profit="+20% since last month" />
+                    <SalesTracker icon={<BarChart />} number="00" title="Total Sales" profit="Currently No Data" available={false} />
+                    <SalesTracker icon={<ListAlt />} number={dailyLogin} title="Daily Active User" profit={`${dailyLogin} Logins in the last 24h`} available={true} />
+                    <SalesTracker icon={<LocalMall />} number="00" title="Product Sold" profit="Currently No Data" available={false} />
+                    <SalesTracker icon={<PersonOutline />} number={monthlyRegister} title="New Customer" profit="+20% since last month" available={true} />
                 </div>
             </div>
           

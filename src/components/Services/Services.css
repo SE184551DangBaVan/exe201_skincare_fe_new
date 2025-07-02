@@ -80,9 +80,8 @@
 }
 .product{
     position: absolute;
-    left: 26%;
-    transform: translateY(140px);
-    bottom: 220px;
+    left: 30%;
+    bottom: 120px;
     z-index: 2;
     width: 500px;
     transition: 0.7s;
@@ -129,15 +128,14 @@
 .rock{
     position: absolute;
     inset: 0 0 0 0;
-    width: 100%;
+    width: 100vw;
     pointer-events: none;
 }
 .rock img:nth-child(1){
     position: absolute;
     height: 170px;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 80px;
+    left: 37%;
+    bottom: 120px;
     transition: 0.7s;
     z-index: 1;
     filter: drop-shadow(0 -2px 5px #333);
@@ -159,7 +157,7 @@
     filter: drop-shadow(0 -2px 5px #333);
 }
 .services:has(.getStartedButton:hover) .banner .rock img:nth-child(1){
-    transform: translateX(-50%) translateY(50px);
+    transform: translateY(50px);
 }
 .services:has(.getStartedButton:hover) .banner .rock img:nth-child(2){
     transform: translateX(-100px) translateY(100px);
