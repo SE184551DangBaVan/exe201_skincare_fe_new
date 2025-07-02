@@ -5,8 +5,185 @@
     height: 600px;
 }
 
-.services canvas {
+.services .animation-canvas {
     position: absolute;
+}
+
+.services .animation-canvas * {
+    padding: 0;
+    margin: 0;
+}
+
+.animation-canvas {
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: "Josefin Sans", sans-serif;
+    color: #1E1E1E;
+    background-color: #CDCDCD;
+    background-image:
+    repeating-linear-gradient(
+        to right, transparent 0 150px, #0001 150px 151px
+    ),
+    repeating-linear-gradient(
+        to bottom, transparent 0 150px, #0001 150px 151px
+    ),
+    linear-gradient(to right, #cdcdcda9, #cdcdcd77),
+    url(images/bg.jpg);
+    background-size: 100% 100%;
+    object-fit: contain;
+}
+.bannerHeader {
+    width: 98%;
+    margin: auto;
+    display: flex;
+    transform: translateY(20px);
+    justify-content: space-between;
+    padding-top: 50px;
+    height: 0px;
+    flex-wrap: wrap;
+}
+.bannerHeader h1{
+    font-family: "Karantina", system-ui;
+    font-size: 15vw;
+    line-height: 0.8em;
+}
+.bannerHeader .author{
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.bannerHeader h3{
+    font-family: "Karantina", system-ui;
+    font-size: 5vw;
+}
+.bannerHeader .author div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.bannerHeader .author div p:nth-child(2){
+    font-weight: 500;
+}
+
+.bannerHeader .author img{
+    width: 250px;
+}
+.banner{
+    margin-top: -50px;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+.product{
+    position: absolute;
+    left: 26%;
+    transform: translateY(140px);
+    bottom: 220px;
+    z-index: 2;
+    width: 500px;
+    transition: 0.7s;
+    filter: drop-shadow(0 5px 2px #333);
+}
+.product .soda{
+    position: absolute;
+    scale: 0.5;
+    bottom: 0;
+    left: calc(50%);
+    transform: translateX(-50%);
+}
+.soda{
+    --left: -30px;
+    background: 
+        var(--url) var(--left),
+        url(images/mockup1.png) 0 0;
+    background-size: auto 100%;
+    width: 500px;
+    aspect-ratio: 1;
+    background-blend-mode: multiply;
+    transition: 0.8s;
+    mask: linear-gradient(to bottom, transparent, transparent 20%, black 80%, black);
+    mask-image: url(images/mockup1.png);
+    mask-repeat: no-repeat;
+    mask-size: auto 100%;
+}
+.soda:nth-child(2){
+    opacity: 0;
+}
+.services:has(.getStartedButton:hover) .product{
+    bottom: 260px;
+    rotate: 10deg;
+}
+.services:has(.getStartedButton:hover) .product .soda:nth-child(2){
+    opacity: 1;
+    --left: 500px;
+}
+.services:has(.getStartedButton:hover) .product .soda:nth-child(1){
+    opacity: 0;
+    --left: 500px;
+}
+
+.rock{
+    position: absolute;
+    inset: 0 0 0 0;
+    width: 100%;
+    pointer-events: none;
+}
+.rock img:nth-child(1){
+    position: absolute;
+    height: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 80px;
+    transition: 0.7s;
+    z-index: 1;
+    filter: drop-shadow(0 -2px 5px #333);
+}
+.rock img:nth-child(2){
+    position: absolute;
+    height: 60%;
+    left: 30%;
+    bottom: 150px;
+    transition: 0.7s;
+    filter: drop-shadow(0 -2px 5px #333);
+}
+.rock img:nth-child(3){
+    position: absolute;
+    height: 60%;
+    right: 28%;
+    bottom: 80px;
+    transition: 0.7s;
+    filter: drop-shadow(0 -2px 5px #333);
+}
+.services:has(.getStartedButton:hover) .banner .rock img:nth-child(1){
+    transform: translateX(-50%) translateY(50px);
+}
+.services:has(.getStartedButton:hover) .banner .rock img:nth-child(2){
+    transform: translateX(-100px) translateY(100px);
+}
+.services:has(.getStartedButton:hover) .banner .rock img:nth-child(3){
+    transform: translateX(100px) translateY(100px);
+}
+@media screen and (max-width: 1023px) {
+    
+    .soda{
+        width: 400px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .soda{
+        width: 250px;
+    }
+    header img{
+        display: none;
+    }
+    header .author{
+        width: 100%;
+    }
+
 }
 
 .bannerImg {

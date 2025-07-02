@@ -5,7 +5,7 @@ import chatIcon from '../../assets/images/icons/robo-idle-transparent.gif';
 import headerImage from '../../assets/images/Logo.png';
 import { FiberManualRecord, PsychologyAlt, Send } from '@mui/icons-material';
 import Spline from '@splinetool/react-spline';
-import Scene2 from "../../assets/scene (2).splinecode";
+import Scene from "../../assets/scene.splinecode";
 
 const ChatBox = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -176,7 +176,7 @@ const ChatBox = () => {
       <div className="chatbox__button" onClick={toggleChatbox}>
         <button>
           <span ref={iconRef}>
-            <img src={chatIcon} alt="Chat Icon" className="AImascot" />
+            <Spline scene={Scene} className="AImascot" />
           </span>
         </button>
       </div>

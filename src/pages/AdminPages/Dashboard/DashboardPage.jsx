@@ -20,6 +20,8 @@ export default function DashboardPage() {
   const [dailyRegister, setDailyRegister] = useState(0);
   const [weeklyRegister, setWeeklyRegister] = useState(0);
   const [monthlyRegister, setMonthlyRegister] = useState(0);
+  
+  const [dailyLogin, setDailyLogin] = useState(0);
 
   useMotionValueEvent(scrollYProgress, "change",
   );
@@ -27,7 +29,7 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchDailyRegister = async () => {
       try {
-        const response = await axios.get("https://skincareapp.somee.com/SkinCare/Admin/reg-users-daily", {
+        const response = await axios.get("https://skincareapp.somee.com/SkinCare/Admin/users/reg-users-daily", {
           withCredentials: true
         });
         if (response.data && typeof response.data.count === "number") {
@@ -46,7 +48,7 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchWeeklyRegister = async () => {
       try {
-        const response = await axios.get("https://skincareapp.somee.com/SkinCare/Admin/reg-users-weekly", {
+        const response = await axios.get("https://skincareapp.somee.com/SkinCare/Admin/users/reg-users-weekly", {
           withCredentials: true
         });
         if (response.data && typeof response.data.count === "number") {
@@ -65,11 +67,10 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchMonthlyRegister = async () => {
       try {
-        const response = await axios.get("https://skincareapp.somee.com/SkinCare/Admin/reg-users-monthly", {
+        const response = await axios.get("https://skincareapp.somee.com/SkinCare/Admin/users/reg-users-monthly", {
           withCredentials: true
         });
         if (response.data && typeof response.data.count === "number") {
-          console.log('Count Month', response.data.count);
           setMonthlyRegister(response.data.count);
         }
       } catch (error) {
@@ -79,6 +80,25 @@ export default function DashboardPage() {
 
     fetchMonthlyRegister();
     const interval = setInterval(fetchMonthlyRegister, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const fetchDailyLogin = async () => {
+      try {
+        const response = await axios.get("https://skincareapp.somee.com/SkinCare/Admin/users/count-login-daily", {
+          withCredentials: true
+        });
+        if (response.data && typeof response.data.count === "number") {
+          setDailyLogin(response.data.count);
+        }
+      } catch (error) {
+        console.error("Failed to fetch monthly register count", error);
+      }
+    };
+
+    fetchDailyLogin();
+    const interval = setInterval(fetchDailyLogin, 10000);
     return () => clearInterval(interval);
   }, []);
 
@@ -153,10 +173,10 @@ export default function DashboardPage() {
                 <span className="statSubTitle">Tổng quan doanh số</span>
                 
                 <div className="trackerContainer" >
-                    <SalesTracker icon={<BarChart />} number="5" title="Total Sales" profit="+10% from yesterday" />
-                    <SalesTracker icon={<ListAlt />} number="20" title="Total Order" profit="57% product delivered" />
-                    <SalesTracker icon={<LocalMall />} number="9" title="Product Sold" profit="+5% product sold" />
-                    <SalesTracker icon={<PersonOutline />} number={monthlyRegister} title="New Customer" profit="+40% since last month" />
+                    <SalesTracker icon={<BarChart />} number="00" title="Total Sales" profit="currently unavailable" />
+                    <SalesTracker icon={<ListAlt />} number={dailyLogin} title="Active User" profit={`${dailyLogin} Logins in the last 24h`} />
+                    <SalesTracker icon={<LocalMall />} number="00" title="Product Sold" profit="currently unavailable" />
+                    <SalesTracker icon={<PersonOutline />} number={monthlyRegister} title="New Customer" profit="+20% since last month" />
                 </div>
             </div>
           

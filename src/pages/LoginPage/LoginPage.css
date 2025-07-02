@@ -236,6 +236,8 @@
     font-size: 12px;
     background-color: white;
     color: black;
+    opacity: 0.5;
+    pointer-events: none;
     padding: 5px 20px;
     border: 1px black solid;
     transition: all 0.4s ease;

@@ -69,7 +69,7 @@ const Sidebar = ({ selected }) => {
             {/* top */}
             <div className="s-top">
                 <img className="skincareLogo" src={Logo} />
-                <div className="s-name">Skincare</div>
+                <div className="s-name">kin<br/>ense</div>
             </div>
             {/* bottom */}
             <div className="s-bottom">

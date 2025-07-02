@@ -32,6 +32,7 @@ const SwipeList = () => {
             transition={transition} src={ImageList1} alt="" />
           <span>Cộng đồng</span>
           <span>Chia sẻ kinh nghiệm và kết nối với người yêu chăm sóc da</span>
+          <div className="swipeImgMask"/>
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
@@ -40,6 +41,7 @@ const SwipeList = () => {
             transition={transition2} src={ImageList2} alt="" />
           <span>Tư vấn AI</span>
           <span>Nhận gợi ý chăm sóc da cá nhân hóa</span>
+          <div className="swipeImgMask"/>
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
@@ -48,6 +50,7 @@ const SwipeList = () => {
             transition={transition3} src={ImageList3} alt="" />
           <span>Kho sản phẩm</span>
           <span>Khám phá đánh giá và thông tin sản phẩm đã kiểm duyệt</span>
+          <div className="swipeImgMask"/>
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
@@ -56,6 +59,7 @@ const SwipeList = () => {
             transition={transition4} src={ImageList4} alt="" />
           <span>Cá nhân hóa</span>
           <span>Theo dõi tiến trình và hành trình làn da của bạn</span>
+          <div className="swipeImgMask"/>
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
@@ -64,6 +68,7 @@ const SwipeList = () => {
             transition={transition} src={ImageList1} alt="" />
           <span>Cộng đồng</span>
           <span>Chia sẻ kinh nghiệm và kết nối với người yêu chăm sóc da</span>
+          <div className="swipeImgMask"/>
         </SwiperSlide>
       </Swiper>
     </div>

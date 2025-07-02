@@ -40,7 +40,7 @@ const LoginPage = ({accountAction}) => {
     try {
       const result = await signInWithPopup(auth, provider);
 
-      if (result) { 
+      if (result) {
         const response = await googleLogin(result.user.email, result.user.accessToken, rememberMe); 
       
         if(response.role) {
@@ -142,7 +142,7 @@ const LoginPage = ({accountAction}) => {
         <div className='line' />Hoặc đăng nhập bằng<div className='line' />
       </div>
       <div className='loginMethods' >
-        <button onClick={handleGoogleLogin} className='GoogleLoginButton' disabled='true'>
+        <button onClick={handleGoogleLogin} className='GoogleLoginButton'>
           <img src={GoogleIcon} alt='Google Icon' className='GGIcon' /> Google
         </button>
         <button className='FaceLoginButton'>
