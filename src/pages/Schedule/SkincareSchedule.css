@@ -1,4 +1,5 @@
-:root {
+:root:has(.schedule-container),
+:root:has(.schedule-cell) {
   --primary-50: #f0f9ff;
   --primary-100: #e0f2fe;
   --primary-200: #bae6fd;
@@ -102,12 +103,16 @@
     sans-serif;
 }
 
-body:has(.schedule-container) > * {
+:root:has(.schedule-container) *,
+:root:has(.schedule-cell) * {
   box-sizing: border-box;
 }
 
+:root:has(.schedule-container) .n-wrapper *,
+:root:has(.schedule-cell) .n-wrapper * { box-sizing: unset; }
+
 .schedule-container {
-  margin-top: 8rem;
+  margin-top: 7.5rem;
   font-family: var(--font-family);
   background-color: var(--gray-50);
   padding: 1.5rem;
@@ -221,8 +226,10 @@ body:has(.schedule-container) > * {
   box-shadow: var(--shadow-xl);
 }
 .review-routine-btn {
+  position: absolute;
+  right: 50px;
   background: var(--purple-100);
-  color: var(--purple-700);
+  color: var(--gray-500);
   border: 1px solid var(--purple-200);
   border-radius: var(--radius-lg);
   padding: 0.75rem 1.25rem;
@@ -238,14 +245,17 @@ body:has(.schedule-container) > * {
 }
 
 .review-routine-btn:hover {
-  background: var(--purple-200);
+  background: var(--purple-600);
   color: var(--purple-800);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
+.review-routine-btn:hover  svg {
+  color: var(--purple-200);
+}
 .review-routine-btn svg {
-  color: var(--purple-500);
+  color: var(--purple-600);
 }
 
 @media (max-width: 768px) {
@@ -390,8 +400,30 @@ body:has(.schedule-container) > * {
   border-bottom: 1px solid var(--gray-200);
 }
 
-.time-row:hover .time-cell {
-  background-color: white !important;
+.time-row:hover .time-cell.morning {
+  box-shadow: inset 0px 0px 5px var(--warning-600);
+  background-color: var(--warning-300);
+}
+.time-row:hover .time-cell.noon {
+  box-shadow: inset 0px 0px 5px var(--primary-600);
+  background-color: var(--primary-300);
+}
+.time-row:hover .time-cell.night {
+  box-shadow: inset 0px 0px 5px var(--purple-600);
+  background-color: var(--purple-300);
+}
+
+.time-row:hover .time-cell.morning {
+  box-shadow: inset 0px 0px 5px var(--warning-600);
+  background-color: var(--warning-300);
+}
+.time-row:hover .time-cell.noon {
+  box-shadow: inset 0px 0px 5px var(--primary-600);
+  background-color: var(--primary-300);
+}
+.time-row:hover .time-cell.night {
+  box-shadow: inset 0px 0px 5px var(--purple-600);
+  background-color: var(--purple-300);
 }
 
 .time-cell {
@@ -405,13 +437,13 @@ body:has(.schedule-container) > * {
 }
 
 .time-cell.morning {
-  background-color: var(--warning-50);
+  background-color: var(--warning-200);
 }
 .time-cell.noon {
-  background-color: var(--primary-50);
+  background-color: var(--primary-200);
 }
 .time-cell.night {
-  background-color: var(--purple-50);
+  background-color: var(--purple-200);
 }
 
 .time-content {
