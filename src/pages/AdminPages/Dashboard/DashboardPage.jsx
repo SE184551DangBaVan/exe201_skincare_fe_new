@@ -9,11 +9,12 @@ import skincareIcon3 from "../../../assets/product_icon_3.png";
 
 import { motion, useScroll, useMotionValueEvent, useTransform, useInView } from "framer-motion";
 import SalesTracker from "../../../components/Charts/SalesTracker"
-import { AccountBox, AssignmentInd, BarChart, ListAlt, LocalMall, PermContactCalendar, PersonOutline } from "@mui/icons-material"
+import { AccountBox, AssignmentInd, BarChart, ListAlt, LocalMall, MonetizationOn, PermContactCalendar, PersonOutline } from "@mui/icons-material"
 import CompositionExample from "../../../components/Charts/GaugePointer"
 import { LineChart } from "@mui/x-charts"
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ExcelAccess from "../../../components/Charts/ExcelAccess";
 
 export default function DashboardPage() {
   const { scrollYProgress } = useScroll();
@@ -134,17 +135,33 @@ export default function DashboardPage() {
   )
   const position3 = useTransform(
       scrollYProgress,
-      [0.8, 1.5],
-      ["0%", "10%"]
+      [0.9, 1],
+      ["0%", "0%"]
   )
   const size3 = useTransform(
       scrollYProgress,
-      [0.8, 1.5],
-      ["1", "0.8"]
+      [0.9, 1],
+      ["1", "1"]
   )
   const blurFilter3 = useTransform(
       scrollYProgress,
-      [0.8, 2],
+      [0.9, 1.5],
+      ["1", "1"]
+  )
+
+  const position4 = useTransform(
+      scrollYProgress,
+      [1, 1.5],
+      ["0%", "10%"]
+  )
+  const size4 = useTransform(
+      scrollYProgress,
+      [1, 1.5],
+      ["1", "0.8"]
+  )
+  const blurFilter4 = useTransform(
+      scrollYProgress,
+      [1, 2],
       ["1", "0.5"]
   )
   return (
@@ -183,7 +200,20 @@ export default function DashboardPage() {
         </motion.div >
 
         <motion.div  className="dashBoardContainer"
-            style={{y: position3, scale: size3, opacity: blurFilter3}}>
+              style={{y: position3, scale: size3, opacity: blurFilter3}}>
+          <Header title="Excel Spreadsheets" subtitle="Tải excel để xem" />
+          
+          <div className="spreadsheetsContainer" >
+            <ExcelAccess icon={<AccountBox />} title="Excel về người dùng" link="https://skincareapp.somee.com/SkinCare/Admin/users/excel" fname="users.xlsx" />
+            <ExcelAccess icon={<MonetizationOn />} title="Excel về doanh thu hàng ngày" link="https://skincareapp.somee.com/SkinCare/Admin/revenue/daily/excel" fname="revenue-daily.xlsx" />
+            <ExcelAccess icon={<MonetizationOn />} title="Excel về doanh thu hàng tuần" link="https://skincareapp.somee.com/SkinCare/Admin/revenue/weekly/excel" fname="revenue-weekly.xlsx" />
+            <ExcelAccess icon={<MonetizationOn />} title="Excel về doanh thu hàng tháng" link="https://skincareapp.somee.com/SkinCare/Admin/revenue/monthly/excel" fname="revenue-monthly.xlsx" />
+          </div>
+          
+        </motion.div >
+
+        <motion.div  className="dashBoardContainer"
+            style={{y: position4, scale: size4, opacity: blurFilter4}}>
 
             <div className="chartContainer">
                 <div className="chartTitle">Thu nhập</div>
