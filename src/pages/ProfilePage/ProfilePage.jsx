@@ -9,16 +9,19 @@ export default function ProfilePage() {
     username: "",
     email: "",
     role: "",
+    vipExpiration: "",
   });
-const navigate = useNavigate();
+  const navigate = useNavigate();
    const loadUserProfile = () => {
     const storedName = sessionStorage.getItem("username") || localStorage.getItem("username");
     const storedEmail = sessionStorage.getItem("email") || localStorage.getItem("email");
     const storedRole = sessionStorage.getItem("role") || localStorage.getItem("role");
+    const vipExpirationDate = sessionStorage.getItem("VIPExperation") || localStorage.getItem("VIPExperation");
     setUserProfile({
       username: storedName || "Unknown",
       email: storedEmail || "Not Found",
       role: storedRole || "Undeserving",
+      vipExpiration: vipExpirationDate,
     });
   };
 
@@ -33,6 +36,17 @@ const navigate = useNavigate();
       window.removeEventListener("storage", loadUserProfile);
     };
   }, []);
+
+  const formatDate = (isoString) => {
+    if (!isoString) return ""; // Null or empty
+    const date = new Date(isoString);
+    if (isNaN(date)) return ""; // Invalid date
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
 
   return (
     <div className="profilePage">
@@ -50,7 +64,15 @@ const navigate = useNavigate();
             <div className="userName">
               {userProfile.username || "Loading..."}
             </div>
-            <div className="userRole">{userProfile.role} - {userProfile.role === 'Admin' ? (<a className="dashBoardNav" onClick={() => navigate("/AdminPage/Dashboard")}>Dashboard</a>) : (<></>)}</div>
+            {userProfile.vipExpiration &&
+            <div className="vipExp">
+              Hạn VIP: {userProfile.vipExpiration || "Loading..."}
+            </div>}
+            {!userProfile.vipExpiration &&
+            <div className="vipExp">
+              Chưa kích hoạt VIP
+            </div>}
+            <div className="userRole">{userProfile.role} - {userProfile.role === 'Admin' ? (<a className="dashBoardNav" onClick={() => navigate("/AdminPage/Dashboard")}>Dashboard</a>) : (<div>(Role)</div>)}</div>
           </div>
 
           <div className="profileDetails">

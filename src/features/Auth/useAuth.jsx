@@ -11,6 +11,16 @@ export const AuthProvider = ({ children }) => {
   const [userAuth, setUserAuth] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const formatDate = (isoString) => {
+    if (!isoString) return ""; // Null or empty
+    const date = new Date(isoString);
+    if (isNaN(date)) return ""; // Invalid date
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
   useEffect(() => {
     const savedEmail = sessionStorage.getItem("email") || localStorage.getItem("email");
 
@@ -61,8 +71,14 @@ export const AuthProvider = ({ children }) => {
           withCredentials: true
         });
         if (profileRes) { 
-          if(rememberMe) { localStorage.setItem("profilePicture", profileRes.data.profilePicture || ""); }
-          else { sessionStorage.setItem("profilePicture", profileRes.data.profilePicture || ""); }
+          if(rememberMe) { 
+            localStorage.setItem("profilePicture", profileRes.data.profilePicture || "");
+            localStorage.setItem("VIPExperation", formatDate(profileRes.data.vipExpirationDate) || "");
+          }
+          else { 
+            sessionStorage.setItem("profilePicture", profileRes.data.profilePicture || "");
+            sessionStorage.setItem("VIPExperation", formatDate(profileRes.data.vipExpirationDate) || "");
+          }
         }
         window.dispatchEvent(new Event("storage"));
 
