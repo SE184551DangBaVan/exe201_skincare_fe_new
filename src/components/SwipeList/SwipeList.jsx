@@ -27,48 +27,68 @@ const SwipeList = () => {
       >
         <SwiperSlide>
           <motion.img 
-            initial={{ top: "20%" }}
-            whileInView={{ top: "0%" }}
+            initial={{ top: "20px" }}
+            whileInView={{ top: "0" }}
             transition={transition} src={ImageList1} alt="" />
-          <span>Cộng đồng</span>
-          <span>Chia sẻ kinh nghiệm và kết nối với người yêu chăm sóc da</span>
-          <div className="swipeImgMask"/>
+          <motion.div initial={{ top: "20px" }}
+            whileInView={{ top: "0" }} transition={transition}
+            className="textBlock">
+            <span>Cộng đồng</span>
+            <span>Chia sẻ kinh nghiệm và kết nối với người yêu chăm sóc da</span>
+            <div className="swipeImgMask"/>
+          </motion.div>
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
             initial={{ top: "20%" }}
             whileInView={{ top: "0%" }}
             transition={transition2} src={ImageList2} alt="" />
-          <span>Tư vấn AI</span>
-          <span>Nhận gợi ý chăm sóc da cá nhân hóa</span>
-          <div className="swipeImgMask"/>
+            <motion.div initial={{ top: "20px" }}
+            whileInView={{ top: "0" }} transition={transition2}
+            className="textBlock">
+              <span>Tư vấn AI</span>
+              <span>Nhận gợi ý chăm sóc da cá nhân hóa</span>
+              <div className="swipeImgMask"/>
+            </motion.div>
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
-            initial={{ top: "20%" }}
-            whileInView={{ top: "0%" }}
+            initial={{ top: "20px" }}
+            whileInView={{ top: "0" }}
             transition={transition3} src={ImageList3} alt="" />
-          <span>Kho sản phẩm</span>
-          <span>Khám phá đánh giá và thông tin sản phẩm đã kiểm duyệt</span>
-          <div className="swipeImgMask"/>
+            <motion.div initial={{ top: "20px" }}
+            whileInView={{ top: "0" }} transition={transition3}
+            className="textBlock">
+              <span>Kho sản phẩm</span>
+              <span>Khám phá đánh giá và thông tin sản phẩm đã kiểm duyệt</span>
+              <div className="swipeImgMask"/>
+            </motion.div>
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
-            initial={{ top: "20%" }}
-            whileInView={{ top: "0%" }}
+            initial={{ top: "20px" }}
+            whileInView={{ top: "0" }}
             transition={transition4} src={ImageList4} alt="" />
-          <span>Cá nhân hóa</span>
-          <span>Theo dõi tiến trình và hành trình làn da của bạn</span>
-          <div className="swipeImgMask"/>
+            <motion.div initial={{ top: "20px" }}
+            whileInView={{ top: "0" }} transition={transition4}
+            className="textBlock">
+              <span>Cá nhân hóa</span>
+              <span>Theo dõi tiến trình và hành trình làn da của bạn</span>
+              <div className="swipeImgMask"/>
+            </motion.div>
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
-            initial={{ top: "10%" }}
-            whileInView={{ top: "0%" }}
+            initial={{ top: "20px" }}
+            whileInView={{ top: "0" }}
             transition={transition} src={ImageList1} alt="" />
-          <span>Cộng đồng</span>
-          <span>Chia sẻ kinh nghiệm và kết nối với người yêu chăm sóc da</span>
-          <div className="swipeImgMask"/>
+            <motion.div initial={{ top: "20px" }}
+            whileInView={{ top: "0" }} transition={transition}
+            className="textBlock">
+              <span>Cộng đồng</span>
+              <span>Chia sẻ kinh nghiệm và kết nối với người yêu chăm sóc da</span>
+              <div className="swipeImgMask"/>
+            </motion.div>
         </SwiperSlide>
       </Swiper>
     </div>

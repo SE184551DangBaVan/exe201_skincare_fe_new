@@ -29,11 +29,13 @@ export default function VIPPurchasePage() {
     const toastId = showLoading("Directing to PayOS...");
 
     try {
+      console.log("Getting URL");
       const response = await axios.post(
         'https://skincareapp.somee.com/SkinCare/vippayment/create-link',
         {},
         { withCredentials: true }
       );
+      console.log("URL", response);
 
       const checkoutUrl = response.data?.checkoutUrl;
 
@@ -97,7 +99,7 @@ export default function VIPPurchasePage() {
           <div className='title'>Tư vấn chăm sóc da VIP độc quyền</div>
           <div className='pricing'>180,000 VND / Tháng</div>
           <div className='benefits'>Quyền lợi thành viên VIP:</div>
-          <p className='block'>
+          <div className='block'>
             <div>
               <Check /> <span>Liệu trình chăm sóc da cá nhân hóa dựa trên phân tích AI</span>
             </div>
@@ -110,7 +112,7 @@ export default function VIPPurchasePage() {
             <div>
               <Check /> <span>Hỗ trợ chăm sóc da 24/7 và tư vấn khẩn cấp</span>
             </div>
-          </p>
+          </div>
           <button className='joinServiceBtn' onClick={handlePayOS}>Tham gia ngay</button>
         </div>
       </motion.div>

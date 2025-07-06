@@ -26,7 +26,6 @@ const navbar = ({ selected, index }) => {
   const navigate = useNavigate();
   const { scrollYProgress } = useScroll();
   const [email, setEmail] = useState(null);
-  console.log("Index", index)
   const [activeIndex, setActiveIndex] = useState(index);
   const markerRef = useRef(null);
   const liRefs = useRef([]);

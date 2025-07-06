@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import "./Intro.css";
 import FloatinDiv from "../FloatingDiv/FloatingDiv";
 import skincareIntro from "../../assets/image 4.png";
+import skincareIntroTransp from "../../assets/image 4(transparent).png";
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
@@ -34,13 +35,14 @@ const Intro = () => {
   return (
     <div className="Intro" id="Intro">
       <div className="i-left">
-        <div className="i-background">
-          <motion.img
-            initial={{ left: "0%" }}
-            whileInView={{ left: "10%" }}
-            transition={transition}
-            src={skincareIntro} alt="" />
-        </div>
+        <motion.div
+            initial={{ paddingLeft: "0%" }}
+            whileInView={{ paddingLeft: "10%" }}
+            transition={transition} className="i-background">
+            <img src={skincareIntro} alt="" />
+            <img src={skincareIntroTransp} alt="" />
+            <div />
+        </motion.div>
         <div className="DNA-wrapper" >
           <div className="box box--top"></div>
           <div className="container-message">

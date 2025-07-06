@@ -16,7 +16,7 @@ export default function AboutPage() {
           <h1>Về nền tảng chăm sóc da của chúng tôi</h1>
           <div>
             Giới thiệu
-            <span> Chào mừng bạn đến với **Team202** – điểm đến hàng đầu cho các giải pháp chăm sóc da cá nhân hóa.
+            <span> Chào mừng bạn đến với SkinSense – điểm đến hàng đầu cho các giải pháp chăm sóc da cá nhân hóa.
               Nền tảng của chúng tôi giúp người dùng nâng cao hiểu biết, nhận tư vấn chuyên sâu từ AI, và kết nối với cộng đồng yêu thích làm đẹp để chia sẻ trải nghiệm thật và đánh giá sản phẩm thực tế.
             </span>
           </div>

@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="f-content-left">
         <img src={Logo} alt="" />
         <div>
-          <span>Nhóm 202</span>
+          <span>SkinSense</span>
           <span>Chăm sóc da thông minh với AI</span>
         </div>
       </div>

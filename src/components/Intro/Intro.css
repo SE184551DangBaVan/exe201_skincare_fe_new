@@ -24,6 +24,21 @@
   border-bottom-left-radius: 8px;
   filter: drop-shadow(5px 2px 5px #4c4c4c75)
 }
+.i-background > *:nth-child(2) {
+  border-radius: 8px ;
+}
+.i-background > *:nth-child(3) {
+  border-radius: 8px;
+  z-index: 5;
+  opacity: 0.2;
+  filter: blur(2px);
+  transform: translateY(99%) rotate(180deg) rotateY(180deg);
+  background-color: transparent;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/image 4(transparent).png");
+  mask-image: linear-gradient(to bottom, transparent, transparent 60%, white 90%, white);
+}
 
 /* right side styling */
 .i-right {
@@ -183,17 +198,22 @@
 
 @keyframes twist{
   0%{
-    transform: translate(10%, 10%);
+    opacity: 0;
+    transform: translate(32%, 0%);
   }
   30% {
-    transform: translate(10%, 5%);
+    opacity: 1;
+    transform: translate(32%, 15%);
+  }
+  45% {
+    transform: translate(32%, 5%);
   }
   60%{
-    transform: translate(10%, 15%);
+    transform: translate(32%, 15%);
     opacity: 1;
   }
   100%{
-    transform: translate(-15%, 10%);
+    transform: translate(-30%, 10%);
     opacity: 0.4;
   }
 }
@@ -215,7 +235,11 @@
   45%{
     height: 10px;
   }
+  80% {
+    opacity: 1;
+  }
   100%{
+    opacity: 0;
     height: 30px;
   }
 }
@@ -348,7 +372,7 @@
 }
 
 .DNA-title {
-  color: #76fff4;
+  color: #41c2d9;
   font-family: 'Poiret One', cursive;
   font-size: 22px;
   white-space: nowrap;
