@@ -3,8 +3,9 @@ import "./Intro.css";
 import FloatinDiv from "../FloatingDiv/FloatingDiv";
 import skincareIntro from "../../assets/image 4.png";
 import skincareIntroTransp from "../../assets/image 4(transparent).png";
+import skincareAIHand from "../../assets/—Pngtree—robot hand transparent_15514339.png";
 import { themeContext } from "../../Context";
-import { motion } from "framer-motion";
+import { delay, motion } from "framer-motion";
 import { Link } from "react-scroll";
 import { useNavigate } from "react-router-dom";
 const Intro = () => {
@@ -136,6 +137,9 @@ const Intro = () => {
           </div>
           <div className="box box--bottom"></div>
         </div>
+        <motion.img initial={{ left: "-20%" }}
+            whileInView={{ left: "0%" }}
+            transition={transition} src={skincareAIHand} alt="" className="roboHand"/>
       </div>
       <div className="i-right">
         <motion.div

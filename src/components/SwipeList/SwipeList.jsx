@@ -10,9 +10,9 @@ import ImageList4 from "../../assets/ImageList4.png";
 import { themeContext } from "../../Context";
 const SwipeList = () => {
   const transition = { delay: 0, duration: 1, type: "spring" };
-  const transition2 = { delay: 0.2, duration: 1, type: "spring" };
-  const transition3 = { delay: 0.4, duration: 1, type: "spring" };
-  const transition4 = { delay: 0.6, duration: 1, type: "spring" };
+  const transition2 = { delay: 0.1, duration: 1, type: "spring" };
+  const transition3 = { delay: 0.2, duration: 1, type: "spring" };
+  const transition4 = { delay: 0.3, duration: 1, type: "spring" };
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
   return (
@@ -27,11 +27,11 @@ const SwipeList = () => {
       >
         <SwiperSlide>
           <motion.img 
-            initial={{ top: "20px" }}
-            whileInView={{ top: "0" }}
+            initial={{ top: "20px", opacity: 0 }}
+            whileInView={{ top: "0", opacity: 1 }}
             transition={transition} src={ImageList1} alt="" />
-          <motion.div initial={{ top: "20px" }}
-            whileInView={{ top: "0" }} transition={transition}
+          <motion.div initial={{ top: "20px", opacity: 0 }}
+            whileInView={{ top: "0", opacity: 1 }} transition={transition}
             className="textBlock">
             <span>Cộng đồng</span>
             <span>Chia sẻ kinh nghiệm và kết nối với người yêu chăm sóc da</span>
@@ -40,11 +40,11 @@ const SwipeList = () => {
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
-            initial={{ top: "20%" }}
-            whileInView={{ top: "0%" }}
+            initial={{ top: "20%", opacity: 0 }}
+            whileInView={{ top: "0%", opacity: 1 }}
             transition={transition2} src={ImageList2} alt="" />
-            <motion.div initial={{ top: "20px" }}
-            whileInView={{ top: "0" }} transition={transition2}
+            <motion.div initial={{ top: "20px", opacity: 0 }}
+            whileInView={{ top: "0", opacity: 1 }} transition={transition2}
             className="textBlock">
               <span>Tư vấn AI</span>
               <span>Nhận gợi ý chăm sóc da cá nhân hóa</span>
@@ -53,11 +53,11 @@ const SwipeList = () => {
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
-            initial={{ top: "20px" }}
-            whileInView={{ top: "0" }}
+            initial={{ top: "20px", opacity: 0 }}
+            whileInView={{ top: "0", opacity: 1 }}
             transition={transition3} src={ImageList3} alt="" />
-            <motion.div initial={{ top: "20px" }}
-            whileInView={{ top: "0" }} transition={transition3}
+            <motion.div initial={{ top: "20px", opacity: 0 }}
+            whileInView={{ top: "0", opacity: 1 }} transition={transition3}
             className="textBlock">
               <span>Kho sản phẩm</span>
               <span>Khám phá đánh giá và thông tin sản phẩm đã kiểm duyệt</span>
@@ -66,11 +66,11 @@ const SwipeList = () => {
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
-            initial={{ top: "20px" }}
-            whileInView={{ top: "0" }}
+            initial={{ top: "20px", opacity: 0 }}
+            whileInView={{ top: "0", opacity: 1 }}
             transition={transition4} src={ImageList4} alt="" />
-            <motion.div initial={{ top: "20px" }}
-            whileInView={{ top: "0" }} transition={transition4}
+            <motion.div initial={{ top: "20px", opacity: 0 }}
+            whileInView={{ top: "0", opacity: 1 }} transition={transition4}
             className="textBlock">
               <span>Cá nhân hóa</span>
               <span>Theo dõi tiến trình và hành trình làn da của bạn</span>
@@ -79,11 +79,11 @@ const SwipeList = () => {
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
-            initial={{ top: "20px" }}
-            whileInView={{ top: "0" }}
+            initial={{ top: "20px", opacity: 0 }}
+            whileInView={{ top: "0", opacity: 1 }}
             transition={transition} src={ImageList1} alt="" />
-            <motion.div initial={{ top: "20px" }}
-            whileInView={{ top: "0" }} transition={transition}
+            <motion.div initial={{ top: "20px", opacity: 0 }}
+            whileInView={{ top: "0", opacity: 1 }} transition={transition}
             className="textBlock">
               <span>Cộng đồng</span>
               <span>Chia sẻ kinh nghiệm và kết nối với người yêu chăm sóc da</span>

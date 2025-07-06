@@ -29,6 +29,7 @@
   filter: none;
   position: relative;
   border-radius: 8px;
+  box-shadow: 0 0 10px gray;
 }
 
 .swipeList-slider .swiper-slide .textBlock .swipeImgMask {
