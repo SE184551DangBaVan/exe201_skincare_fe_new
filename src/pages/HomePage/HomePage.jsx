@@ -10,6 +10,7 @@ import skincareIcon1 from "../../assets/product_icon_1.png";
 
 import { useContext } from "react";
 import { themeContext } from "../../Context";
+import Promote from "../../components/Advertisement/Promote";
 
 export default function HomePage() {
   const theme = useContext(themeContext);
@@ -30,6 +31,7 @@ export default function HomePage() {
             <Services />
             <ChatBox />
         
+            <Promote />
         </div>
   )
 }

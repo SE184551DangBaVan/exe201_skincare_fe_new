@@ -1,96 +1,139 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useState } from "react";
 import "./SwipeList.css";
-import { Swiper, SwiperSlide } from "swiper/react"
-import { delay, motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { motion } from "framer-motion";
 import "swiper/css";
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css/autoplay';
+
 import ImageList1 from "../../assets/ImageList1.png";
 import ImageList2 from "../../assets/ImageList2.png";
 import ImageList3 from "../../assets/ImageList3.png";
 import ImageList4 from "../../assets/ImageList4.png";
+import ImageList5 from "../../assets/ImageList5.png";
+
+import ImageList1Back from "../../assets/ImageList1Back.jpg";
+import ImageList2Back from "../../assets/ImageList2Back.jpg";
+import ImageList3Back from "../../assets/ImageList3Back.jpg";
+import ImageList4Back from "../../assets/ImageList4Back.jpg";
+import ImageList5Back from "../../assets/ImageList5Back.jpg";
+
 import { themeContext } from "../../Context";
+
 const SwipeList = () => {
-  const transition = { delay: 0, duration: 1, type: "spring" };
-  const transition2 = { delay: 0.1, duration: 1, type: "spring" };
-  const transition3 = { delay: 0.2, duration: 1, type: "spring" };
-  const transition4 = { delay: 0.3, duration: 1, type: "spring" };
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
-  return (
-    <div className="swipeList" id="swipeList">
 
-      {/* slider */}
+  const imageTrackRef = useRef(null);
+  const swiperRef = useRef(null);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const backgroundImages = [
+    ImageList5Back,
+    ImageList1Back,
+    ImageList2Back,
+    ImageList3Back,
+    ImageList4Back
+  ];
+
+  return (
+    <div
+      className="swipeList"
+      id="swipeList"
+      ref={imageTrackRef}
+    >
+      {/* BACKGROUND IMAGE SLIDESHOW */}
+      <motion.div className="swipe-background-wrapper">
+        {backgroundImages.map((bg, i) => (
+          <>
+            <motion.img
+              key={i}
+              src={bg}
+              alt=""
+              className="swipe-background-image"
+              initial={{ opacity: 0, scale: 1 }}
+              animate={{
+                opacity: i === activeIndex ? 1 : 0,
+                objectPosition: i === activeIndex ? '0px 0' : '20px 0',
+                zIndex: i === activeIndex ? 1 : 0
+              }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="backgoundTextBlock"
+            >
+              <span>HÃY THEO <span><br/> CHÚNG TÔI</span></span>
+              <span>Hành Trình Của Bạn Chỉ Vừa Mới Bắt Đầu</span>
+              <div className="swipeBGImgMask" />
+            </motion.div>
+          </>
+        ))}
+      </motion.div>
+
+      {/* SWIPER FOREGROUND */}
       <Swiper
-        spaceBetween={60}
-        slidesPerView={4}
+        spaceBetween={40}
+        slidesPerView={2}
         grabCursor={true}
+        modules={[Autoplay]}
+        autoplay={{ delay: 5000 }}
+        loop={true}
+        freeMode={true}
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         className="swipeList-slider"
       >
-        <SwiperSlide>
-          <motion.img 
-            initial={{ top: "20px", opacity: 0 }}
-            whileInView={{ top: "0", opacity: 1 }}
-            transition={transition} src={ImageList1} alt="" />
-          <motion.div initial={{ top: "20px", opacity: 0 }}
-            whileInView={{ top: "0", opacity: 1 }} transition={transition}
-            className="textBlock">
-            <span>Cộng đồng</span>
-            <span>Chia sẻ kinh nghiệm và kết nối với người yêu chăm sóc da</span>
-            <div className="swipeImgMask"/>
-          </motion.div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <motion.img 
-            initial={{ top: "20%", opacity: 0 }}
-            whileInView={{ top: "0%", opacity: 1 }}
-            transition={transition2} src={ImageList2} alt="" />
-            <motion.div initial={{ top: "20px", opacity: 0 }}
-            whileInView={{ top: "0", opacity: 1 }} transition={transition2}
-            className="textBlock">
-              <span>Tư vấn AI</span>
-              <span>Nhận gợi ý chăm sóc da cá nhân hóa</span>
-              <div className="swipeImgMask"/>
-            </motion.div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <motion.img 
-            initial={{ top: "20px", opacity: 0 }}
-            whileInView={{ top: "0", opacity: 1 }}
-            transition={transition3} src={ImageList3} alt="" />
-            <motion.div initial={{ top: "20px", opacity: 0 }}
-            whileInView={{ top: "0", opacity: 1 }} transition={transition3}
-            className="textBlock">
-              <span>Kho sản phẩm</span>
-              <span>Khám phá đánh giá và thông tin sản phẩm đã kiểm duyệt</span>
-              <div className="swipeImgMask"/>
-            </motion.div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <motion.img 
-            initial={{ top: "20px", opacity: 0 }}
-            whileInView={{ top: "0", opacity: 1 }}
-            transition={transition4} src={ImageList4} alt="" />
-            <motion.div initial={{ top: "20px", opacity: 0 }}
-            whileInView={{ top: "0", opacity: 1 }} transition={transition4}
-            className="textBlock">
-              <span>Cá nhân hóa</span>
-              <span>Theo dõi tiến trình và hành trình làn da của bạn</span>
-              <div className="swipeImgMask"/>
-            </motion.div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <motion.img 
-            initial={{ top: "20px", opacity: 0 }}
-            whileInView={{ top: "0", opacity: 1 }}
-            transition={transition} src={ImageList1} alt="" />
-            <motion.div initial={{ top: "20px", opacity: 0 }}
-            whileInView={{ top: "0", opacity: 1 }} transition={transition}
-            className="textBlock">
-              <span>Cộng đồng</span>
-              <span>Chia sẻ kinh nghiệm và kết nối với người yêu chăm sóc da</span>
-              <div className="swipeImgMask"/>
-            </motion.div>
-        </SwiperSlide>
+        {[ImageList1, ImageList2, ImageList3, ImageList4, ImageList5].map(
+          (imgSrc, i) => (
+            <SwiperSlide key={i}>
+              <motion.img
+                initial={{ objectPosition: '0% center' }}
+                animate={{
+                  objectPosition:
+                    i === activeIndex
+                      ? '0% center'
+                      : i === (activeIndex + 1) % 5
+                        ? '50% center'
+                        : '100% center',
+                }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                src={imgSrc}
+                alt="" className="parallax-image"
+              />
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="textBlock"
+              >
+                <span>{
+                  [
+                    "Cộng đồng",
+                    "Tư vấn AI",
+                    "Kho sản phẩm",
+                    "Cá nhân hóa",
+                    "Uy tín cao",
+                  ][i]
+                }</span>
+                <span>{
+                  [
+                    "Chia sẻ kinh nghiệm và kết nối với người yêu chăm sóc da",
+                    "Nhận gợi ý chăm sóc da cá nhân hóa",
+                    "Khám phá đánh giá và thông tin sản phẩm đã kiểm duyệt",
+                    "Theo dõi tiến trình và hành trình làn da của bạn",
+                    "Luôn đảm bảo dịch vụ tốt nhất cho bạn",
+                  ][i]
+                }</span>
+                <div className="swipeImgMask" />
+              </motion.div>
+            </SwiperSlide>
+          )
+        )}
       </Swiper>
+      <span className="letterPoke">HÃY</span>
     </div>
   );
 };
