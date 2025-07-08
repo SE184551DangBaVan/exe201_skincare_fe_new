@@ -17,7 +17,7 @@
     "@mui/styled-engine-sc": "^7.1.0",
     "@mui/x-charts": "^8.5.1",
     "@splinetool/react-spline": "^4.0.0",
-    "@splinetool/runtime": "^1.10.16",
+    "@splinetool/runtime": "^1.10.22",
     "axios": "^1.9.0",
     "firebase": "^11.8.1",
     "framer-motion": "^12.12.1",
