@@ -245,7 +245,7 @@
     opacity: 1;
   }
   100%{
-    transform: translate(-30%, 10%);
+    transform: translate(-16%, 10%);
     opacity: 0.4;
   }
 }

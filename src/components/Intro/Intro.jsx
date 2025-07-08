@@ -138,7 +138,7 @@ const Intro = () => {
           <div className="box box--bottom"></div>
         </div>
         <motion.img initial={{ left: "-20%" }}
-            whileInView={{ left: "0%" }}
+            whileInView={{ left: "12%" }}
             transition={transition} src={skincareAIHand} alt="" className="roboHand"/>
       </div>
       <div className="i-right">

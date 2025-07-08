@@ -13,6 +13,52 @@
     color: black;
 }
 
+.adBanner .expandIconContainer {
+  width: 24px;
+  height: 40px;
+  color: black;
+  background-color: rgba(206, 206, 206, 0.8);
+  position: absolute;
+  right: -24px;
+  left: unset;
+  top: 40%;
+  border-radius: 0 12px 12px 0;
+  animation: slideOut 10s ease;
+  transition: color 0.3s ease;
+}
+
+.adBanner .expandIconContainer::before {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 40px;
+  bottom: 40px;
+  left: 0;
+  background-image: radial-gradient( 190% 190% at 70% 30%, transparent, transparent 40%, rgba(206, 206, 206, 0.8) 40%, rgba(206, 206, 206, 0.8) 100%);
+}
+
+.adBanner .expandIconContainer::after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 40px;
+  top: 40px;
+  left: 0;
+  background-image: radial-gradient( 190% 190% at 70% 70%, transparent, transparent 40%, rgba(206, 206, 206, 0.8) 40%, rgba(206, 206, 206, 0.8) 100%);
+}
+
+.adBanner .expandIcon {
+  width: 100%;
+  height: 100%;
+  rotate: 0;
+  animation: initialRotate 10s ease;
+  transition: all 0.4s ease;
+}
+
+.adBanner .expandIcon.active {
+  rotate: 180deg;
+}
+
 .adBanner {
   position: fixed;
   z-index: 10;
@@ -25,18 +71,18 @@
   height: 76%;
   margin: 20px auto;
   color: black;
-  background-color: rgba(206, 206, 206, 0.704);
+  background-color: rgba(206, 206, 206, 0.8);
   border: 0.5px solid rgb(187, 187, 187);
   padding: 10px;
   border-radius: 0 8px 8px 0;
   backdrop-filter: blur(3px);
   animation: adPopup 10s;
-  opacity: 0.6;
-  left: -12%;
+  opacity: 0.8;
+  left: -222px;
   transition: all 0.8s ease;
 }
 
-.adBanner:hover {
+.adBanner:has(.expandIcon.active) {
   opacity: 1 !important;
   left: 0 !important;
   transition: all 0.5s ease;
@@ -184,16 +230,20 @@
 }
 @keyframes adPopup {
   0% {
+    opacity: 0.2;
+    left: -222px;
+  }
+  20% {
     opacity: 1;
     left: 0;
   }
-  80% {
+  90% {
     opacity: 1;
     left: 0;
   }
   100% {
-    opacity: 0.6;
-    left: -12%;
+    opacity: 0.8;
+    left: -222px;
   }
 }
 
@@ -333,5 +383,51 @@
   }
   100% {
     transform: rotate(-10deg);
+  }
+}
+
+@-webkit-keyframes initialRotate {
+  0% {
+    rotate: 180deg;
+  }
+  90% {
+    rotate: 180deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}
+@keyframes initialRotate {
+  0% {
+    rotate: 180deg;
+  }
+  90% {
+    rotate: 180deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}
+
+@-webkit-keyframes slideOut {
+  0% {
+    right: 222px;
+  }
+  90% {
+    right: 222px;
+  }
+  100% {
+    right: -24px;
+  }
+}
+@keyframes slideOut {
+  0% {
+    right: 222px;
+  }
+  90% {
+    right: 222px;
+  }
+  100% {
+    right: -24px;
   }
 }

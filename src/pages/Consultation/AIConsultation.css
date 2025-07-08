@@ -826,6 +826,7 @@
 }
 
 .modal-content {
+  margin-top: 10rem;
   background: var(--bg-color, white);
   border-radius: 24px;
   padding: 25px;
@@ -1507,6 +1508,7 @@
     gap: 40px;
   }
 }
+
 .results-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1528,5 +1530,236 @@
   .results-container {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+}
+
+/* ========================================= */
+/* VIP MODAL STYLES - THÊM MỚI */
+/* ========================================= */
+
+/* VIP Modal Styles */
+.vip-modal {
+  max-width: 500px;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    var(--bg-color, white) 0%,
+    var(--purple, rgb(238 210 255)) 100%
+  );
+  border: 2px solid var(--primary, #581b98);
+  position: relative;
+  overflow: hidden;
+}
+
+.vip-modal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+.vip-modal > * {
+  position: relative;
+  z-index: 2;
+}
+
+.vip-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary, #581b98);
+  font-size: 1.8rem;
+}
+
+.vip-modal-body {
+  margin-bottom: 30px;
+}
+
+.vip-icon-container {
+  margin-bottom: 25px;
+}
+
+.vip-icon-large {
+  background: var(
+    --primaryGradient,
+    linear-gradient(93.12deg, #e8a689 0.52%, #de8764 100%)
+  );
+  width: 120px;
+  height: 120px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: var(--primaryBoxShadow, 0px 10px 15px rgba(0, 0, 0, 0.1));
+  position: relative;
+  overflow: hidden;
+}
+
+.vip-icon-large::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shine 3s ease-in-out infinite;
+}
+
+.vip-icon-large svg {
+  color: var(--foreground-color, white);
+  z-index: 1;
+  position: relative;
+}
+
+.vip-modal-subtitle {
+  font-size: 1.6rem;
+  font-weight: var(--semiBold, 600);
+  color: var(--primary, #581b98);
+  margin-bottom: 15px;
+  letter-spacing: -0.02em;
+}
+
+.vip-modal-description {
+  color: var(--secondary-text-color, #808080);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vip-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.vip-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-color, rgba(255, 255, 255, 0.7));
+  padding: 12px 15px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.3));
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.vip-feature-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--boxShadow, 0px 19px 60px rgb(0 0 0 / 8%));
+}
+
+.vip-feature-icon {
+  font-size: 1.2rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.vip-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vip-upgrade-btn {
+  background: var(
+    --gradient-bg,
+    linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+  );
+  color: var(--foreground-color, white);
+  font-weight: var(--semiBold, 600);
+  padding: 16px 35px;
+  border-radius: 18px;
+  box-shadow: var(--primaryBoxShadow, 0px 10px 15px rgba(0, 0, 0, 0.1));
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.vip-upgrade-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(
+    --primaryGradient,
+    linear-gradient(93.12deg, #e8a689 0.52%, #de8764 100%)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.vip-upgrade-btn:hover::before {
+  opacity: 1;
+}
+
+.vip-upgrade-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--secondaryBoxShadow, 0px -10px 15px rgba(0, 0, 0, 0.1));
+}
+
+.vip-upgrade-btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.vip-later-btn {
+  background: var(--secondary-bg-color, #f5f5f5);
+  color: var(--secondary-text-color, #808080);
+  font-weight: var(--semiBold, 600);
+  padding: 14px 30px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color, rgba(64, 64, 64, 0.2));
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.vip-later-btn:hover {
+  background: var(--side-menu-hover-color, rgba(0, 0, 0, 0.1));
+  transform: translateY(-1px);
+}
+
+/* Responsive VIP Modal */
+@media (max-width: 768px) {
+  .vip-features {
+    grid-template-columns: 1fr;
+  }
+
+  .vip-modal-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .vip-title {
+    font-size: 1.6rem;
   }
 }

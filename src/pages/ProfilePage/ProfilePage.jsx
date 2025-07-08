@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { User, Mail, Shield, UserCheck } from "lucide-react";
+import { User, Mail, Shield, UserCheck, Crown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import "./ProfilePage.css";
 import BGImage from "../../components/BGImage/BGImage";
@@ -59,19 +59,19 @@ export default function ProfilePage() {
               <div className="avatar">
                 <User />
               </div>
+              {userProfile.vipExpiration && <Crown className="vipBadgeIcon"/>}
               <div className="statusBadge"></div>
             </div>
             <div className="userName">
-              {userProfile.username || "Loading..."}
+              {userProfile.username || "Loading..."} {userProfile.vipExpiration && <div className="vipBadge">VIP</div>}
             </div>
-            {userProfile.vipExpiration &&
-            <div className="vipExp">
-              Hạn VIP: {userProfile.vipExpiration || "Loading..."}
-            </div>}
-            {!userProfile.vipExpiration &&
+            {userProfile.vipExpiration ?
+            (<div className="vipExp paid">
+              Hạn VIP: <span>{userProfile.vipExpiration || "Loading..."}</span>
+            </div>) : (
             <div className="vipExp">
               Chưa kích hoạt VIP
-            </div>}
+            </div>)}
             <div className="userRole">{userProfile.role} - {userProfile.role === 'Admin' ? (<a className="dashBoardNav" onClick={() => navigate("/AdminPage/Dashboard")}>Dashboard</a>) : (<div>(Role)</div>)}</div>
           </div>
 

@@ -8,6 +8,8 @@ import {
   Star,
   CalendarDays,
   X,
+  Crown,
+  CreditCard,
 } from "lucide-react";
 import "./AIConsultation.css";
 import { useNavigate } from "react-router-dom";
@@ -23,13 +25,26 @@ const AIConsultation = () => {
   const [uploadMode, setUploadMode] = useState("file");
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [stream, setStream] = useState(null);
+  const [showVipPopup, setShowVipPopup] = useState(false);
+  const [userProfile, setUserProfile] = useState(null);
 
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const navigate = useNavigate();
+
   const navigateToSchedule = () => {
     navigate("/schedule");
   };
+
+  const navigateToPurchase = () => {
+    navigate("/VIP-purchase");
+  };
+
+  const closeVipPopup = () => {
+    setShowVipPopup(false);
+    navigate("/schedule");
+  };
+
   useEffect(() => {
     if (isCameraOpen && stream && videoRef.current) {
       videoRef.current.srcObject = stream;
@@ -55,6 +70,37 @@ const AIConsultation = () => {
 
     checkAuthentication();
   }, []);
+
+  // Kiểm tra trạng thái VIP sau khi đã authenticate
+  useEffect(() => {
+    const checkVipStatus = async () => {
+      if (isAuthenticated && !checkingAuth) {
+        try {
+          const response = await fetch(
+            "https://skincareapp.somee.com/SkinCare/Profile",
+            {
+              method: "GET",
+              credentials: "include",
+            }
+          );
+
+          if (response.ok) {
+            const profileData = await response.json();
+            setUserProfile(profileData);
+
+            // Nếu vipExpirationDate là null thì hiển thị popup
+            if (profileData.vipExpirationDate === null) {
+              setShowVipPopup(true);
+            }
+          }
+        } catch (error) {
+          console.error("Error checking VIP status:", error);
+        }
+      }
+    };
+
+    checkVipStatus();
+  }, [isAuthenticated, checkingAuth]);
 
   // Cleanup camera stream when component unmounts
   useEffect(() => {
@@ -302,6 +348,64 @@ const AIConsultation = () => {
               </button>
               <button onClick={closeCamera} className="cancel-btn">
                 Hủy
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* VIP Popup Modal */}
+      {showVipPopup && (
+        <div className="modal-overlay">
+          <div className="modal-content vip-modal">
+            <div className="modal-header">
+              <h3 className="modal-title vip-title">
+                <Crown size={24} />
+                Nâng cấp VIP
+              </h3>
+            </div>
+
+            <div className="vip-modal-body">
+              <div className="vip-icon-container">
+                <div className="vip-icon-large">
+                  <Crown size={64} />
+                </div>
+              </div>
+
+              <h4 className="vip-modal-subtitle">Bạn chưa có gói VIP</h4>
+
+              <p className="vip-modal-description">
+                Nâng cấp lên VIP để trải nghiệm đầy đủ các tính năng premium của
+                ứng dụng chăm sóc da thông minh
+              </p>
+
+              <div className="vip-features">
+                <div className="vip-feature-item">
+                  <span className="vip-feature-icon">✨</span>
+                  <span>Phân tích da chuyên sâu</span>
+                </div>
+                <div className="vip-feature-item">
+                  <span className="vip-feature-icon">🎯</span>
+                  <span>Lời khuyên cá nhân hóa</span>
+                </div>
+                <div className="vip-feature-item">
+                  <span className="vip-feature-icon">📅</span>
+                  <span>Lịch trình chăm sóc chi tiết</span>
+                </div>
+                <div className="vip-feature-item">
+                  <span className="vip-feature-icon">🏆</span>
+                  <span>Ưu tiên hỗ trợ 24/7</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="vip-modal-actions">
+              <button onClick={navigateToPurchase} className="vip-upgrade-btn">
+                <CreditCard size={20} />
+                Nâng cấp VIP ngay
+              </button>
+              <button onClick={closeVipPopup} className="vip-later-btn">
+                Để sau
               </button>
             </div>
           </div>

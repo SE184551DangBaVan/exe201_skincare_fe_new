@@ -4,16 +4,20 @@ import { createPortal } from 'react-dom';
 import Logo from '/logo skincare 2.svg'
 import RoboLogo from '../../assets/images/icons/robo-idle-transparent.gif'
 import { useNavigate } from 'react-router-dom';
-import { ArrowForward, Close } from '@mui/icons-material';
+import { ArrowForward, Close, KeyboardArrowRight } from '@mui/icons-material';
 import { useState } from 'react';
 
 export default function Promote() {
   const navigate = useNavigate();
   const [closeBanner, setCloseBanner] = useState(true);
+  const [expandBanner, setExpandBanner] = useState(false);
+
+  const vipExpirationDate = sessionStorage.getItem("VIPExperation") || localStorage.getItem("VIPExperation");
 
   const modalContent = (
     <>
-    {closeBanner && <div className="adBanner">
+    {closeBanner && !vipExpirationDate &&
+    <div className="adBanner">
         <img className="logo" src={Logo} alt="skinsense logo" />
         
         <section className="section1">
@@ -39,6 +43,9 @@ export default function Promote() {
         </section>
         
         <Close className='closeIcon' onClick={() => setCloseBanner(false)} />
+        <div className='expandIconContainer'>
+            <KeyboardArrowRight className={`${expandBanner ? 'active' : ''} expandIcon`} onClick={() => setExpandBanner(!expandBanner)} />
+        </div>
     </div>}
     </>
   );
