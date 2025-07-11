@@ -7,14 +7,12 @@
     color: var(--primary-text-color);    
 }
 
-.misc {
+/* .misc {
   width: 100px;
   position: fixed;
   top: 200px;
   right: 20px;
   transform: rotate(0deg);
-  filter: blur(2px);
-  opacity: 0.5;
   animation: rotateRight 4s linear infinite;
   animation-play-state: paused;
   animation-delay: calc(var(--scroll) * -1s);
@@ -26,12 +24,10 @@
   bottom: 150px;
   left: 20px;
   transform: rotate(-20deg);
-  filter: blur(4px);
-  opacity: 0.5;
   animation: rotateLeft 2s linear infinite;
   animation-play-state: paused;
   animation-delay: calc(var(--scroll) * -1s);
-}
+} */
 
 @keyframes rotateRight {
   to {

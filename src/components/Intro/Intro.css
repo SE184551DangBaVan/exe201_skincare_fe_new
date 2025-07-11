@@ -5,11 +5,22 @@
   padding-top: 9rem;
 }
 
+.introBG {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/hannes-kocholl-fvsOTg3PG_E-unsplash.jpg");
+  background-size: 100% auto;
+  background-position: bottom;
+  mask-image: linear-gradient(to bottom, transparent, transparent 20%, white 40%, white 90%, transparent);
+}
+
 /* left side styling */
 .i-left {
   display: flex;
   flex: 1;
   position: relative;
+  margin-top: 40px;
 }
 .i-background {
   flex: 1;
@@ -48,6 +59,20 @@
   mix-blend-mode: luminosity;
   mask-image: linear-gradient(to bottom, transparent, transparent 60%, white 90%, white);
 }
+.i-background > *:nth-child(4) {
+  pointer-events: none;
+  border-radius: 8px;
+  z-index: 1;
+  mask-image: unset;
+  position: absolute;
+  background-image: url("../../assets/image 4(transparent).png");
+  filter: unset;
+  background-size: 0;
+  height: 500px;
+  box-shadow: inset 0 0 20px #adadad;
+  border: 5px solid white;
+  padding: 35px 20px 0 40px;
+}
 
 .i-left .roboHand {
   mask-image: unset;
@@ -65,7 +90,9 @@
   flex-direction: column;
   justify-content: left;
   flex: 1;
+  height: 600px;
   padding-left: 40px;
+  margin-top: 40px;
   position: relative;
   user-select: none;
   z-index: 10;
@@ -73,14 +100,14 @@
 .i-name {
   display: flex;
   width: 50%;
-  height: 72%;
+  height: 500px;
   flex-direction: column;
   text-align: left;
   background-color: var(--bg-color);
   color: var(--primary-text-color);
-  padding: 45px 20px 0 20px;
+  padding: 45px 20px 0 40px;
   border-radius: 0 8px 8px 0;
-  box-shadow: 20px 10px 20px rgba(128, 128, 128, 0.2);
+  box-shadow: 0 1px 20px rgba(128, 128, 128, 0.4);
   font-weight: bold;
   font-size: 3rem;
   line-height: 60px;
@@ -101,7 +128,7 @@
 .i-button {
   border: 2px solid transparent;
   position: relative;
-  top: -100px;
+  bottom: 70px;
   color: var(--primary-text-color);
   background-color: #FFB897;
   border-radius: 36px;
@@ -408,4 +435,154 @@
   font-family: 'Poiret One', cursive;
   font-size: 22px;
   white-space: nowrap;
+}
+
+.introRippleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  scale: 0.5;
+  pointer-events: none;
+  left: 0;
+  top: 90%;
+  bottom: -20%;
+  right: 70%;
+  transform: rotateX(60deg);
+}
+
+.introRippleContainer .wave {
+  pointer-events: none;
+  opacity: 0;
+	width: 2px;
+	height: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #aeaeae 7px solid;
+	-moz-border-radius: 300px / 150px;
+	-webkit-border-radius: 300px / 150px;
+	border-radius: 300px / 150px;
+  -moz-animation-name: introRipple;
+  -webkit-animation-name: introRipple;
+  animation-name: introRipple;
+  -moz-animation-delay: 2s;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  -moz-animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.introRippleContainer .wave:after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+	width: 2px;
+	height: 1px;
+  border: #aeaeae 5px solid;
+	-moz-border-radius: 300px / 150px;
+	-webkit-border-radius: 300px / 150px;
+	border-radius: 300px / 150px;
+  -moz-animation-name: introRipple-2;
+  -webkit-animation-name: introRipple-2;
+  animation-name: introRipple-2;
+  -moz-animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.introRippleContainer2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  scale: 0.6;
+  pointer-events: none;
+  left: 20%;
+  top: 60%;
+  bottom: -10%;
+  right: 0;
+  transform: rotateX(60deg);
+}
+
+.introRippleContainer2 .wave {
+  pointer-events: none;
+  opacity: 0;
+	width: 2px;
+	height: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #cacaca 7px solid;
+	-moz-border-radius: 300px / 150px;
+	-webkit-border-radius: 300px / 150px;
+	border-radius: 300px / 150px;
+  -moz-animation-name: introRipple;
+  -webkit-animation-name: introRipple;
+  animation-name: introRipple;
+  -moz-animation-delay: 2s;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2.5s;
+  -moz-animation-duration: 2.5s;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2.5s;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.introRippleContainer2 .wave:after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+	width: 2px;
+	height: 1px;
+  border: #cacaca 5px solid;
+	-moz-border-radius: 300px / 150px;
+	-webkit-border-radius: 300px / 150px;
+	border-radius: 300px / 150px;
+  -moz-animation-name: introRipple-2;
+  -webkit-animation-name: introRipple-2;
+  animation-name: introRipple-2;
+  -moz-animation-duration: 2.5s;
+  -webkit-animation-duration: 2.5s;
+  animation-duration: 2.5s;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+@keyframes introRipple {
+    from {
+      opacity: 1;
+    }
+    to {
+      width: 800px;
+      height: 300px;
+      border-width: 1px;
+      opacity: 0;
+    }
+}
+
+@keyframes introRipple-2 {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  100% {
+    width: 200px;
+    height: 100px;
+    border-width: 1px;
+  }
 }

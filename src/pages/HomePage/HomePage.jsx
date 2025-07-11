@@ -16,14 +16,14 @@ export default function HomePage() {
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
   return (
-        <div className= { darkMode ? "homePageApp" : "homePageApp Dark"}
+      <div className= { darkMode ? "homePageApp" : "homePageApp Dark"}
         style={{
             background: darkMode ? "white" : "#333",
             color: darkMode ? "" : "white",
         }}
         >
-            <img src={skincareIcon} alt="" className="misc"/>
-            <img src={skincareIcon1} alt="" className="misc1"/>
+            {/* <img src={skincareIcon} alt="" className="misc"/>
+            <img src={skincareIcon1} alt="" className="misc1"/> */}
 
             <Intro />
             <SwipeList/>
@@ -32,6 +32,6 @@ export default function HomePage() {
             <ChatBox />
         
             <Promote />
-        </div>
+      </div>
   )
 }

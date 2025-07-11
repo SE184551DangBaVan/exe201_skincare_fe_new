@@ -317,7 +317,7 @@
     box-shadow: 2px 1px 5px #555;
 }
 
-.error-message {
+.login-error-message {
     position: absolute;
     z-index: 2;
     width: 70%;

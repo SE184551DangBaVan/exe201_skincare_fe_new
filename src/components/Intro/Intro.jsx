@@ -5,7 +5,7 @@ import skincareIntro from "../../assets/image 4.png";
 import skincareIntroTransp from "../../assets/image 4(transparent).png";
 import skincareAIHand from "../../assets/—Pngtree—robot hand transparent_15514339.png";
 import { themeContext } from "../../Context";
-import { delay, motion } from "framer-motion";
+import { useScroll, useMotionValueEvent, useTransform, delay, motion } from "framer-motion";
 import { Link } from "react-scroll";
 import { useNavigate } from "react-router-dom";
 const Intro = () => {
@@ -33,16 +33,30 @@ const Intro = () => {
     }
   }, []);
 
+  const { scrollYProgress } = useScroll();
+
+
+  const transitionSmooth = {
+    duration: 2,
+    type: "all",
+  };
+  useMotionValueEvent(scrollYProgress, "change");
+  const mainPosition = useTransform(scrollYProgress, [0.05, 0.4], ["translateY(0px)", "translateY(-150px)"]);
+  const framePosition = useTransform(scrollYProgress, [0.05, 0.4], ["translateY(0px)", "translateY(-300px)"]);
+  const position = useTransform(scrollYProgress, [0.05, 0.4], ["translateY(0px)", "translateY(-200px)"]);
+
   return (
     <div className="Intro" id="Intro">
-      <div className="i-left">
+      <motion.div className="introBG" style={{ transform: mainPosition, transition: "all 0.2s ease" }} transition={transitionSmooth}></motion.div>
+      <div className="i-left" >
         <motion.div
             initial={{ paddingLeft: "0%" }}
             whileInView={{ paddingLeft: "10%" }}
             transition={transition} className="i-background">
-            <img src={skincareIntro} alt="" />
-            <img src={skincareIntroTransp} alt="" />
-            <div />
+            <motion.img src={skincareIntro} alt="" style={{ transform: position, transition: "all 0.2s ease" }} transition={transitionSmooth}/>
+            <motion.img src={skincareIntroTransp} alt="" style={{ transform: position, transition: "all 0.2s ease" }} transition={transitionSmooth}/>
+            <motion.div style={{ transform: position, transition: "all 0.2s ease" }} transition={transitionSmooth}/>
+            <motion.div style={{ transform: framePosition, transition: "all 0.2s ease" }} transition={transitionSmooth}/>
         </motion.div>
         <div className="DNA-wrapper" >
           <div className="box box--top"></div>
@@ -141,9 +155,9 @@ const Intro = () => {
             whileInView={{ left: "12%" }}
             transition={transition} src={skincareAIHand} alt="" className="roboHand"/>
       </div>
-      <div className="i-right">
+      <motion.div className="i-right" style={{ transform: framePosition, transition: "all 0.2s ease" }} transition={transitionSmooth}>
         <motion.div
-          initial={{ left: "40%" }}
+          initial={{ left: "35%" }}
           whileInView={{ top: "0%", left: "30%" }}
           transition={transition}
           className="i-name">
@@ -157,7 +171,7 @@ const Intro = () => {
         </motion.div>
         <motion.div
           initial={{ left: "20%" }}
-          whileInView={{ left: "5%" }}
+          whileInView={{ left: "10%" }}
           transition={transition} style={{ position: 'relative' }}>
           <button className="frontPageButton i-button" onClick={() => handleDirect()}>Phân tích miễn phí</button>
         </motion.div>
@@ -170,7 +184,9 @@ const Intro = () => {
           alt=""
         /> */}
 
-      </div>
+      </motion.div>
+      <motion.div className="introRippleContainer" style={{ transform: mainPosition, transition: "all 0.2s ease" }} transition={transitionSmooth}><div className="wave"></div></motion.div>
+      <motion.div className="introRippleContainer2" style={{ transform: mainPosition, transition: "all 0.2s ease" }} transition={transitionSmooth}><div className="wave"></div></motion.div>
     </div>
   );
 };

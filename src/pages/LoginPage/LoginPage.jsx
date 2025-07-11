@@ -49,8 +49,9 @@ const LoginPage = ({accountAction}) => {
             navigate(response.role === "Admin" ? "/AdminPage/Dashboard" : "/profile");
           }, 100);
         }
-
+        else if (response.code === "ERR_NETWORK") { updateToast(toastId, "error", "Network Error. Please try again."); }
       }
+
     } catch (error) {
       console.error("Đăng nhập bằng Google thất bại:", error);
       updateToast(toastId, "error", "Đăng nhập bằng Google thất bại. Hãy thử lại.");
@@ -123,7 +124,7 @@ const LoginPage = ({accountAction}) => {
                 </div>
             </div>
           </div>
-          {error && <p className="error-message">{error}</p>}
+          {error && <p className="login-error-message">{error}</p>}
           <Box width="500px" height="20px" padding="0" display="flex" flexDirection="row" justifyContent="center" gap="200px" alignItems="center">
             <FormControlLabel 
               control={<Checkbox size="small" color="primary" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />}
@@ -146,7 +147,7 @@ const LoginPage = ({accountAction}) => {
           <img src={GoogleIcon} alt='Google Icon' className='GGIcon' /> Google
         </button>
         <button className='FaceLoginButton'>
-          <img src={FaceIcon} alt='Face Icon' className='GGIcon' disabled='true' /> Facebook
+          <img src={FaceIcon} alt='Face Icon' className='GGIcon' disabled={true} /> Facebook
         </button>
       </div>
       <div className="account-toggle" style={{userSelect: 'none' }} >

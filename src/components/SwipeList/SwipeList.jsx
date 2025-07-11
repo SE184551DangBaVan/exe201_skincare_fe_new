@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import "./SwipeList.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { motion } from "framer-motion";
+import { useScroll, useMotionValueEvent, useTransform, motion } from "framer-motion";
 import "swiper/css";
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css/autoplay';
@@ -36,6 +36,18 @@ const SwipeList = () => {
     ImageList4Back
   ];
 
+  const { scrollYProgress } = useScroll();
+
+
+  const transitionSmooth = {
+    duration: 2,
+    type: "all",
+  };
+  useMotionValueEvent(scrollYProgress, "change");
+  const mainPosition = useTransform(scrollYProgress, [0.3, 0.6], ["translateY(0px)", "translateY(-150px)"]);
+  const framePosition = useTransform(scrollYProgress, [0.3, 0.6], ["translateY(10px)", "translateY(-300px)"]);
+  const position = useTransform(scrollYProgress, [0.3, 0.6], ["translateY(0px)", "translateY(-200px)"]);
+
   return (
     <div
       className="swipeList"
@@ -43,9 +55,9 @@ const SwipeList = () => {
       ref={imageTrackRef}
     >
       {/* BACKGROUND IMAGE SLIDESHOW */}
-      <motion.div className="swipe-background-wrapper">
+      <motion.div className="swipe-background-wrapper" style={{ transform: mainPosition, transition: "all 0.2s ease" }} transition={transitionSmooth}>
         {backgroundImages.map((bg, i) => (
-          <>
+          <div>
             <motion.img
               key={i}
               src={bg}
@@ -69,11 +81,12 @@ const SwipeList = () => {
               <span>Hành Trình Của Bạn Chỉ Vừa Mới Bắt Đầu</span>
               <div className="swipeBGImgMask" />
             </motion.div>
-          </>
+          </div>
         ))}
       </motion.div>
-
+      
       {/* SWIPER FOREGROUND */}
+      <motion.div className="swipeList-container" style={{ transform: framePosition, zIndex: 5, transition: "all 0.2s ease" }} transition={transitionSmooth}>
       <Swiper
         spaceBetween={40}
         slidesPerView={2}
@@ -84,6 +97,7 @@ const SwipeList = () => {
         freeMode={true}
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
+        style={{ transform: framePosition, transition: "all 0.2s ease" }} transition={transitionSmooth}
         className="swipeList-slider"
       >
         {[ImageList1, ImageList2, ImageList3, ImageList4, ImageList5].map(
@@ -133,7 +147,8 @@ const SwipeList = () => {
           )
         )}
       </Swiper>
-      <span className="letterPoke">HÃY</span>
+      </motion.div>
+      <motion.span className="letterPoke" style={{ transform: mainPosition, transition: "all 0.2s ease" }} transition={transitionSmooth}>HÃY</motion.span>
     </div>
   );
 };
