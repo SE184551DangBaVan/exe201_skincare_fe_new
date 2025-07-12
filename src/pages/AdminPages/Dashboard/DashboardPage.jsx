@@ -23,12 +23,14 @@ export default function DashboardPage() {
   
   const [dailyLogin, setDailyLogin] = useState(0);
   const [profitMargin, setProfitMargin] = useState(0);
-  const [total, setTotatl] = useState("");
+  const [total, setTotal] = useState("");
   const [logs, setLogs] = useState([]);
+  const [pendingCount, setPendingCount] = useState(0);
+  const [completedCount, setCompletedCount] = useState(0);
+  const [progressPercent, setProgressPercent] = useState(0);
 
   const [revenuePeriod, setRevenuePeriod] = useState("monthly");
   const [revenuePeriodLabel, setRevenuePeriodLabel] = useState("tháng");
-
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -161,14 +163,27 @@ export default function DashboardPage() {
         const res = await axios.get(`https://skincareapp.somee.com/SkinCare/Admin/revenue/${revenuePeriod}`, {
           withCredentials: true,
         });
-        setLogs(res.data.logs || []);
-        setTotatl(res.data.total || 0);
+
+        const fetchedLogs = res.data.logs || [];
+        const pendingLogs = fetchedLogs.filter(log => log.paymentStatus === "Pending");
+        const completed = fetchedLogs.length - pendingLogs.length;
+        const percent = fetchedLogs.length > 0
+          ? ((completed / fetchedLogs.length) * 100)
+          : 0;
+
+        setLogs(fetchedLogs);
+        setTotal(res.data.total || 0);
+        setPendingCount(pendingLogs.length);
+        setCompletedCount(completed);
+        setProgressPercent(Number(percent.toFixed(1))); // round to 1 decimal
       } catch (err) {
         console.error("Failed to fetch revenue logs", err);
       }
     };
 
     fetchLogs();
+    const interval = setInterval(fetchLogs, 10000);
+    return () => clearInterval(interval);
   }, [revenuePeriod]);
 
   const position1 = useTransform(
@@ -268,14 +283,19 @@ export default function DashboardPage() {
             style={{y: position2, scale: size2, opacity: blurFilter2}}>
 
             <div className="statistaContainer">
-                <div className="statTitle">Doanh số hôm nay</div>
+                <div className="statTitle">Doanh số</div>
                 <span className="statSubTitle">Tổng quan doanh số</span>
-                
-                <div className="trackerContainer" >
+                <div className="countTrackerContainer">
+                  <div className="routine-feedbackContainer">
+                    <h2>Phản hồi về AI Routine</h2>
+                    <div style={{color: 'white', fontSize: '3rem', backgroundColor: 'darkgray'}}>Đang làm, sắp hoàn thành</div>
+                  </div>
+                  <div className="trackerContainer" >
                     <SalesTracker icon={<BarChart />} number={profitMargin} title="Tổng doanh thu" profit="Lợi nhuận tháng này" available={true} currency={true}/>
                     <SalesTracker icon={<ListAlt />} number={weeklyRegister} title="Đăng ký hàng tuần" profit={`${dailyLogin} đăng nhập trong 24h qua`} available={true} />
                     <SalesTracker icon={<LocalMall />} number="00" title="Sản phẩm đã bán" profit="Currently No Data" available={false} />
                     <SalesTracker icon={<PersonOutline />} number={monthlyRegister} title="Người dùng mới" profit="+30% so với tháng trước" available={true} />
+                  </div>
                 </div>
             </div>
           
@@ -298,7 +318,23 @@ export default function DashboardPage() {
             style={{y: position4, scale: size4, opacity: blurFilter4}}>
           <div className="revenue-title">
             <div className="revenue-title-header">Doanh thu hàng {revenuePeriodLabel}</div>
-            <div className="revenue-total-profit">{total}</div>
+            <div className="revenue-total-profit"><div className="profitValue">{logs.length-pendingCount}  /  {logs.length}</div><span>Hoàn Tất</span></div>
+            <div className="revenue-total-profit pending"><div className="profitValue">{pendingCount}  /  {logs.length}</div><span>Chưa Trả</span></div>
+          </div>
+          <div className="revenueProgress-card">
+            <div className="revenueProgress-box">
+              <h3>Tổng số giao dịch ({logs.length})</h3>
+              <div className="revenueProgress-percent">
+                <svg>
+                  <circle cx="70" cy="70" r="70"></circle>
+                  <circle cx="70" cy="70" r="70" style={{"--value": progressPercent}}></circle>
+                </svg>
+                    <div className="num">
+                      <h2>{progressPercent}<span>%</span></h2>
+                    </div>
+              </div>
+                  <h2 className="revenueProgress-text">{completedCount} / {logs.length}</h2>
+            </div>
           </div>
           <div
             className={`swanky_wrapper ${isDropdownOpen ? 'open' : ''}`}

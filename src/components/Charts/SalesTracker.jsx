@@ -28,7 +28,7 @@ const SalesTracker = ({ icon, title, number, profit, available, currency }) => {
         {icon}
         <motion.div style={{ maxWidth: '80%', minWidth: '80%', minHeight: '50px', fontSize: '28px', fontWeight: '600', color: "black", 
           display: 'flex', flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-evenly', overflowX: 'auto', overflowY: 'hidden' }}>
-          {formattedNumber} {currency && <span className="salesTrackerCurrncy"> VND</span>}
+          {formattedNumber} {currency && <span className="salesTrackerCurrency"> VND</span>}
         </motion.div>
         <Typography fontSize={14} fontWeight={200} color="darkgray" sx={{ m: "0 0 20px 0" }}>
           {title}
