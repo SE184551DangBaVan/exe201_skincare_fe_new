@@ -30,6 +30,8 @@ export default function DashboardPage() {
   const [progressPercent, setProgressPercent] = useState(0);
   const [routineFeedback, setRoutineFeedback] = useState([]);
 
+  const [completedMonthlyCount, setCompletedMonthlyCount] = useState(0);
+
   const [revenuePeriod, setRevenuePeriod] = useState("monthly");
   const [revenuePeriodLabel, setRevenuePeriodLabel] = useState("tháng");
 
@@ -157,6 +159,28 @@ export default function DashboardPage() {
     const interval = setInterval(fetchProfitMargin, 10000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const fetchStaticLogs = async () => {
+      try {
+        const res = await axios.get(`https://skincareapp.somee.com/SkinCare/Admin/revenue/monthly`, {
+          withCredentials: true,
+        });
+
+        const fetchedStaticLogs = res.data.logs || [];
+        const pendingStaticLogs = fetchedStaticLogs.filter(log => log.paymentStatus === "Pending");
+        const staticCompleted = fetchedStaticLogs.length - pendingStaticLogs.length;
+        
+        setCompletedMonthlyCount(staticCompleted);
+      } catch (err) {
+        console.error("Failed to fetch Statistic logs", err);
+      }
+    };
+
+    fetchStaticLogs();
+    const interval = setInterval(fetchStaticLogs, 10000);
+    return () => clearInterval(interval);
+  }, [revenuePeriod]);
 
   useEffect(() => {
     const fetchLogs = async () => {
@@ -333,7 +357,7 @@ export default function DashboardPage() {
                   <div className="trackerContainer" >
                     <SalesTracker icon={<BarChart />} number={profitMargin} title="Tổng doanh thu" profit="Lợi nhuận tháng này" available={true} currency={true}/>
                     <SalesTracker icon={<ListAlt />} number={weeklyRegister} title="Đăng ký hàng tuần" profit={`${dailyLogin} đăng nhập trong 24h qua`} available={true} />
-                    <SalesTracker icon={<LocalMall />} number={completedCount} title="Gói VIP đã mua" profit="Hoàn tất giao dịch tháng này" available={true} />
+                    <SalesTracker icon={<LocalMall />} number={completedMonthlyCount} title="Gói VIP đã mua" profit="Giao dịch hoàn tất tháng này" available={true} />
                     <SalesTracker icon={<PersonOutline />} number={monthlyRegister} title="Người dùng mới" profit="+10% so với tháng trước" available={true} />
                   </div>
                 </div>
