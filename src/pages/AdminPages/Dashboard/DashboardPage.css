@@ -127,9 +127,94 @@
 }
 
 .countTrackerContainer .routine-feedbackContainer {
+  padding-top: 40px;
   width: 55%;
+  height: 500px;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding-right: 10px;
   border-right: 5px dotted #4b4b4ba5;
+}
+
+.countTrackerContainer .routine-feedbackContainer h2 {
+  position: fixed;
+  top: 60px;
+  justify-self: center;
+  background: linear-gradient(to bottom, #F7F7F7 60%, rgba(245, 245, 245, 0.6) , transparent 100%);
+  width: 53%;
+  padding-bottom: 20px;
+}
+
+.routine-feedbackContainer .routine-feedback-message-container {
+  width: 100%;
+  height: fit-content;
+  columns: 200px;
+  column-gap: 10px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+.routine-feedbackContainer::-webkit-scrollbar {
+  width: 6px;
+}
+.routine-feedbackContainer::-webkit-scrollbar-track {
+  background-color: darkgray;
+}
+.routine-feedbackContainer::-webkit-scrollbar-thumb {
+  background-color: rgb(98, 98, 98);
+  border-radius: 100px;
+}
+
+.routine-feedback-message-container .feedback-card {
+  break-inside: avoid;
+  width: 85%;
+  height: fit-content;
+  border-radius: 8px;
+  padding: 12px 16px;
+  background-color: #f8f9fb;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+  border: 1px solid #e2e4e9;
+  margin-bottom: 10px;
+}
+
+.routine-feedback-message-container .feedback-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 6px;
+  gap: 6px;
+}
+
+.routine-feedback-message-container .feedback-username {
+  font-weight: bold;
+  color: #333;
+}
+
+.routine-feedback-message-container .feedback-email {
+  font-style: italic;
+  color: #888;
+}
+
+.routine-feedback-message-container .feedback-date {
+  width: 100%;
+  text-align: right;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.routine-feedback-message-container .feedback-message {
+  font-size: 15px;
+  color: #222;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+.routine-feedback-message-container .no-feedback-message {
+  color: #999;
+  font-style: italic;
+  padding: 12px;
 }
 
 .statistaContainer .trackerContainer {
@@ -614,20 +699,23 @@
 }
 
 .dashBoardContainer .revenue-title {
-  width: 800px;
+  width: 350px;
   height: auto;
-  position: absolute;
-  left: 40px;
-  top: 20px;
+  position: relative;
+  left: 30px;
+  top: 0px;
+  padding: 10px 0 30px 10px;
+  border-radius: 12px;
   text-align: left;
   display: flex;
   flex-direction: column;
+  background-color: #ececec;
 }
 
 .dashBoardContainer .revenue-title .revenue-title-header {
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin: 0 0 20px 10px;
 }
 
 .dashBoardContainer .revenue-title .revenue-total-profit {
@@ -638,7 +726,7 @@
 }
 
 .dashBoardContainer .revenue-title .revenue-total-profit .profitValue {
-  min-width: 100px;
+  width: 150px;
   font-size: 36px;
   color: cadetblue;
   font-weight: 800;
@@ -819,6 +907,13 @@
   }
 }
 
+.dashBoardContainer.revenue {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 0px;
+}
+
 .revenue-slider {
   width: 100%;
   height: var(--height);
@@ -910,22 +1005,20 @@
 {
   position:relative;
   top: 0;
-  scale: 0.8;
-  transform: translateX(-80px) translateY(0px);
+  scale: 0.75;
   width:250px;
+  padding: 15px 50px 15px 50px;
+  background-color: #ececec;
   display:flex;
   justify-content:center;
   align-items:center;
   height:240px;
-  border-radius:4px;
+  border-radius: 12px;
   text-align:center;
   overflow:hidden;
   transition:0.5s;
 }
-.revenueProgress-card:hover
-{
-  transform: translateX(-80px) translateY(-10px);
-}
+
 .revenueProgress-card:before
 {
   content:'';

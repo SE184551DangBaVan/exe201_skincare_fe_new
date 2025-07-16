@@ -41,6 +41,7 @@ const LoginPage = ({accountAction}) => {
       const result = await signInWithPopup(auth, provider);
 
       if (result) {
+        console.log("Login res", result);
         const response = await googleLogin(result.user.email, result.user.accessToken, rememberMe); 
       
         if(response.role) {
@@ -146,9 +147,9 @@ const LoginPage = ({accountAction}) => {
         <button onClick={handleGoogleLogin} className='GoogleLoginButton'>
           <img src={GoogleIcon} alt='Google Icon' className='GGIcon' /> Google
         </button>
-        <button className='FaceLoginButton'>
+        {/* <button className='FaceLoginButton'>
           <img src={FaceIcon} alt='Face Icon' className='GGIcon' disabled={true} /> Facebook
-        </button>
+        </button> */}
       </div>
       <div className="account-toggle" style={{userSelect: 'none' }} >
         {switched ?

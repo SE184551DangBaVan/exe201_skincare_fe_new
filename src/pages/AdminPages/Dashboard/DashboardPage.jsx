@@ -28,6 +28,7 @@ export default function DashboardPage() {
   const [pendingCount, setPendingCount] = useState(0);
   const [completedCount, setCompletedCount] = useState(0);
   const [progressPercent, setProgressPercent] = useState(0);
+  const [routineFeedback, setRoutineFeedback] = useState([]);
 
   const [revenuePeriod, setRevenuePeriod] = useState("monthly");
   const [revenuePeriodLabel, setRevenuePeriodLabel] = useState("tháng");
@@ -186,6 +187,26 @@ export default function DashboardPage() {
     return () => clearInterval(interval);
   }, [revenuePeriod]);
 
+  useEffect(() => {
+    const fetchRoutineFeedback = async () => {
+      try {
+        const response = await axios.get("https://skincareapp.somee.com/SkinCare/Admin/routine-feedbacks", {
+          withCredentials: true
+        });
+        console.log("Routine", response.data)
+        if (response.data) {
+          setRoutineFeedback(response.data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch Routine Feedback", error);
+      }
+    };
+
+    fetchRoutineFeedback();
+    const interval = setInterval(fetchRoutineFeedback, 100000);
+    return () => clearInterval(interval);
+  }, []);
+
   const position1 = useTransform(
       scrollYProgress,
       [0, 0.5],
@@ -272,9 +293,9 @@ export default function DashboardPage() {
           <Header title="Trang quản trị" subtitle="Chào mừng bạn đến với bảng điều khiển" />
           
           <div className="counterContainer" >
-            <Tracker icon={<AccountBox />} title="Đăng ký hàng ngày" number={dailyRegister} />
-            <Tracker icon={<AssignmentInd />} title="Đăng ký hàng tuần" number={weeklyRegister} />
-            <Tracker icon={<PermContactCalendar />} title="Đăng ký hàng tháng" number={monthlyRegister} />
+            <Tracker icon={<AccountBox />} title="Đăng ký trong 24h qua" number={dailyRegister} />
+            <Tracker icon={<AssignmentInd />} title="Đăng ký trong tuần này" number={weeklyRegister} />
+            <Tracker icon={<PermContactCalendar />} title="Đăng ký trong tháng này" number={monthlyRegister} />
           </div>
           
         </motion.div >
@@ -288,13 +309,32 @@ export default function DashboardPage() {
                 <div className="countTrackerContainer">
                   <div className="routine-feedbackContainer">
                     <h2>Phản hồi về AI Routine</h2>
-                    <div style={{color: 'white', fontSize: '3rem', backgroundColor: 'darkgray'}}>Đang làm, sắp hoàn thành</div>
+                    <div className="routine-feedback-message-container">
+                      {routineFeedback.length === 0 ? (
+                        <div className="no-feedback-message">Chưa có phản hồi nào.</div>
+                      ) : (
+                        routineFeedback.map((feedback, index) => (
+                          <>
+                            <div key={feedback.id || index} className="feedback-card">
+                            <div className="feedback-header">
+                              <span className="feedback-username">{feedback.userName}</span>
+                              <span className="feedback-email">{feedback.userEmail}</span>
+                              <span className="feedback-message">{feedback.message}</span>
+                            </div>
+                            <div className="feedback-date">
+                                {new Date(feedback.createdAt).toLocaleString('vi-VN')}
+                            </div>
+                          </div>
+                          </>
+                        ))
+                      )}
+                    </div>
                   </div>
                   <div className="trackerContainer" >
                     <SalesTracker icon={<BarChart />} number={profitMargin} title="Tổng doanh thu" profit="Lợi nhuận tháng này" available={true} currency={true}/>
                     <SalesTracker icon={<ListAlt />} number={weeklyRegister} title="Đăng ký hàng tuần" profit={`${dailyLogin} đăng nhập trong 24h qua`} available={true} />
-                    <SalesTracker icon={<LocalMall />} number="00" title="Sản phẩm đã bán" profit="Currently No Data" available={false} />
-                    <SalesTracker icon={<PersonOutline />} number={monthlyRegister} title="Người dùng mới" profit="+30% so với tháng trước" available={true} />
+                    <SalesTracker icon={<LocalMall />} number={completedCount} title="Gói VIP đã mua" profit="Hoàn tất giao dịch tháng này" available={true} />
+                    <SalesTracker icon={<PersonOutline />} number={monthlyRegister} title="Người dùng mới" profit="+10% so với tháng trước" available={true} />
                   </div>
                 </div>
             </div>
@@ -314,7 +354,7 @@ export default function DashboardPage() {
           
         </motion.div >
 
-        <motion.div  className="dashBoardContainer"
+        <motion.div  className="dashBoardContainer revenue"
             style={{y: position4, scale: size4, opacity: blurFilter4}}>
           <div className="revenue-title">
             <div className="revenue-title-header">Doanh thu hàng {revenuePeriodLabel}</div>
@@ -404,7 +444,7 @@ export default function DashboardPage() {
                 
                 <div className="progressGaugeContainer" >
                     <CompositionExample />
-                    <div className='valuePercentage'>47%</div>
+                    <div className='valuePercentage'>86%</div>
                 </div>
             </div>
 
@@ -415,8 +455,8 @@ export default function DashboardPage() {
                     <LineChart className="lineChart"
                         
                         series={[
-                            { curve: "linear", data: [1, 5, 2, 6, 3, 9.3] },
-                            { curve: "linear", data: [6, 3, 7, 9.5, 4, 2] },
+                            { curve: "linear", data: [1, 5, 4, 6, 7, 9.3] },
+                            { curve: "linear", data: [9.3,9.3,9.3,9.3,9.3,9.3] },
                         ]}
                     />
                 </div>

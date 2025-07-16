@@ -36,7 +36,7 @@ export default function CompositionExample() {
       height={200}
       startAngle={-110}
       endAngle={110}
-      value={47}
+      value={86}
       color='#A9DFD8'
     >
       <GaugeReferenceArc />

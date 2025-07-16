@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./SkincareSchedule.css";
 import { showLoading, updateToast } from "../../utils/toastUtils";
 import { useNavigate } from "react-router-dom";
-import AIConsultation from "../Consultation/AIConsultation";
 import RoutineReviewModal from "./RoutineReviewModal";
 
 const SkincareSchedule = () => {
@@ -403,12 +402,12 @@ const SkincareSchedule = () => {
     }
   };
 
-  const ProductCell = ({ timeOfDay, date }) => {
+  const ProductCell = ({ timeOfDay, date, isToday }) => {
     const session = getSessionNumber(timeOfDay);
     const products = getProductsForSession(timeOfDay, date);
 
     return (
-      <td className="schedule-cell">
+      <td className={`schedule-cell ${!isToday ? "disabled" : ""}`}>
         <div className="cell-content">
           {products.length === 0 ? (
             <div>
@@ -421,14 +420,25 @@ const SkincareSchedule = () => {
                 timeOfDay,
                 date
               );
+              const canClick = isToday && !isChecked;
+
               return (
                 <div
                   key={`${product.productId}-${index}`}
-                  className={`product-item ${isChecked ? "checked" : ""}`}
+                  className={`product-item ${isChecked ? "checked" : ""} ${
+                    !isToday ? "disabled" : ""
+                  }`}
                   onClick={() =>
-                    !isChecked &&
+                    canClick &&
                     checkProduct(product.productId, session, date.toISOString())
                   }
+                  style={{
+                    cursor: canClick
+                      ? "pointer"
+                      : !isToday
+                      ? "not-allowed"
+                      : "default",
+                  }}
                 >
                   <div className="product-image-wrapper">
                     <img
@@ -572,9 +582,6 @@ const SkincareSchedule = () => {
                   <tr key={timeOfDay} className="time-row">
                     <td className={`time-cell ${timeOfDay}`}>
                       <div className="time-content">
-                        <div className={`time-icon ${timeOfDay}`}>
-                          {timeInfo.icon}
-                        </div>
                         <div className="time-info">
                           <div className="time-label">{timeInfo.label}</div>
                           <div className="time-desc">
@@ -583,13 +590,18 @@ const SkincareSchedule = () => {
                         </div>
                       </div>
                     </td>
-                    {weekDates.map((date, index) => (
-                      <ProductCell
-                        key={`${timeOfDay}-${index}`}
-                        timeOfDay={timeOfDay}
-                        date={date}
-                      />
-                    ))}
+                    {weekDates.map((date, index) => {
+                      const isToday =
+                        date.toDateString() === new Date().toDateString();
+                      return (
+                        <ProductCell
+                          key={`${timeOfDay}-${index}`}
+                          timeOfDay={timeOfDay}
+                          date={date}
+                          isToday={isToday}
+                        />
+                      );
+                    })}
                   </tr>
                 );
               })}

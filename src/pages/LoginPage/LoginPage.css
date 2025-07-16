@@ -201,12 +201,12 @@
 .loginMethods {
     width: 450px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-direction: row;
 }
 .GoogleLoginButton {
-    width: 200px; height: 38px;
+    width: 400px; height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -228,7 +228,7 @@
     scale: 0.8;
 }
 
-.FaceLoginButton {
+/* .FaceLoginButton {
     width: 200px; height: 38px;
     display: flex;
     align-items: center;
@@ -251,7 +251,7 @@
 }
 .FaceLoginButton .GGIcon{
     scale: 0.6;
-}
+} */
 
 .loginButton:hover{
     padding-left: 20px;

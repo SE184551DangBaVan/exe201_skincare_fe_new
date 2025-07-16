@@ -4,12 +4,14 @@ import './OtpModal.css';
 import axios from 'axios';
 
 import { showSuccess, showError, showLoading, updateToast } from '../../utils/toastUtils.js';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 export default function OtpModal({ email, forgotPass, onClose, onSuccess }) {
   const [otp, setOtp] = useState("");
   const [resetEmail, setResetEmail] = useState("");
   const [resetEmailConfirm, setResetEmailConfirm] = useState(false)
   const [newPassword, setNewPassword] = useState("");
+  const [showNewPassword, setShowNewPassword] = useState(false);
   const [error, setError] = useState(null);
   const passRetrieve = forgotPass;
 
@@ -80,6 +82,10 @@ export default function OtpModal({ email, forgotPass, onClose, onSuccess }) {
     }
   };
 
+  const toggleNewPasswordVisibility = () => {
+    setShowNewPassword((prev) => !prev);
+  };
+
   const modalContent = (
     <>
     {passRetrieve ? (
@@ -95,11 +101,14 @@ export default function OtpModal({ email, forgotPass, onClose, onSuccess }) {
             onChange={(e) => setOtp(e.target.value)}
           />
           <input className='seccondInput'
-            type="text"
+            type={showNewPassword ? "text" : "password"}
             placeholder="Enter New Password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
           />
+          <div className={`newPassToggle ${showNewPassword ? 'hide' : 'show'}`} onClick={toggleNewPasswordVisibility}>  
+            <Visibility className={showNewPassword ? 'show' : ''}/> <VisibilityOff className={showNewPassword ? '' : 'hide'}/>
+          </div>
           {error && <p className="error-messages">{error}</p>}
           <div className="otp-actions">
             <button onClick={handleReset}>Confirm</button>

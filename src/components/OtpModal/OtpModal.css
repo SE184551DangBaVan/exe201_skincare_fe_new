@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 5000;
 }
 
 .otp-modal {
@@ -38,6 +38,31 @@
 
 .otp-modal input::placeholder { user-select: none; padding-left: 10px; transform: translateX(0%); transition: transform 0.4s ease;}
 .otp-modal input:focus-within::placeholder { transform: translateX(-100%); transition: transform 0.3s ease;}
+
+.otp-modal .newPassToggle {
+    border-left: 2px solid #ffffff99;
+    padding: 5px;
+    display: flex;
+    position: absolute;
+    margin-top: 55px;
+    right: 45px;
+}
+.newPassToggle.show { flex-direction: row-reverse; }
+.newPassToggle.hide { flex-direction: row; }
+
+.newPassToggle svg {
+    opacity: 0;
+}
+
+.newPassToggle svg.show {
+    opacity: 1;
+    color: #333;
+}
+
+.newPassToggle svg.hide {
+    opacity: 1;
+    color: #555;
+}
 
 .otp-actions {
   display: flex;

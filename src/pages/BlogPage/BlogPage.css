@@ -93,7 +93,7 @@
   height: 220px;
   object-fit: contain;
   overflow: hidden;
-  border-radius: 1rem 0 0 1rem;
+  mask-image: radial-gradient(circle, white 90%, transparent 90%);
 }
 
 .skinBlog-content {

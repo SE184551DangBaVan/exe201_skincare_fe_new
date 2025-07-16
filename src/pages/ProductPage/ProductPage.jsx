@@ -131,20 +131,6 @@ export default function ProductPage() {
             <div className="review-date">
               {new Date(rev.createdAt).toLocaleDateString("en-CA")}
             </div>
-            <div className="review-helpful">
-              Thông tin này có hữu ích không?
-              <div className="helpful-btn-group">
-                <button className="helpful-btn helpful-yes">
-                  <span className="helpful-icon">👍</span> <b>Có (0)</b>
-                </button>
-                <button className="helpful-btn helpful-no">
-                  <span className="helpful-icon">👎</span> <b>Không (0)</b>
-                </button>
-              </div>
-            </div>
-            <a href="#" className="review-report">
-              Báo cáo đánh giá này
-            </a>
           </div>
         </div>
         <hr />

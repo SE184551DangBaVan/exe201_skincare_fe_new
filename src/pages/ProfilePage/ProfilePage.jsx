@@ -3,6 +3,7 @@ import { User, Mail, Shield, UserCheck, Crown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import "./ProfilePage.css";
 import BGImage from "../../components/BGImage/BGImage";
+import axios from "axios";
 
 export default function ProfilePage() {
   const [userProfile, setUserProfile] = useState({
@@ -35,6 +36,26 @@ export default function ProfilePage() {
       window.removeEventListener("focus", loadUserProfile);
       window.removeEventListener("storage", loadUserProfile);
     };
+  }, []);
+
+  useEffect(() => {
+    const fetchProfileInterval = async () => {
+      try {
+        const response = await axios.get("https://skincareapp.somee.com/SkinCare/Profile", {
+          withCredentials: true
+        });
+        if (response.data) {
+          localStorage.setItem("VIPExperation", formatDate(response.data.vipExpirationDate) || "");
+          loadUserProfile();
+        }
+      } catch (error) {
+        console.error("Failed to fetch Profile interval.", error);
+      }
+    };
+
+    fetchProfileInterval();
+    const interval = setInterval(fetchProfileInterval, 30000);
+    return () => clearInterval(interval);
   }, []);
 
   const formatDate = (isoString) => {
@@ -105,7 +126,6 @@ export default function ProfilePage() {
             <button className="actionButton primaryButton" onClick={() => navigate("/editprofile")}>
               Cập nhật hồ sơ
             </button>
-            <button className="actionButton secondaryButton">Cài đặt</button>
           </div>
         </div>
       </div>
