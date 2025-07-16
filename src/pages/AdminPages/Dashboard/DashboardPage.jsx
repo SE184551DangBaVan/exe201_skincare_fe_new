@@ -356,7 +356,7 @@ export default function DashboardPage() {
                   </div>
                   <div className="trackerContainer" >
                     <SalesTracker icon={<BarChart />} number={profitMargin} title="Tổng doanh thu" profit="Lợi nhuận tháng này" available={true} currency={true}/>
-                    <SalesTracker icon={<ListAlt />} number={weeklyRegister} title="Đăng ký hàng tuần" profit={`${dailyLogin} đăng nhập trong 24h qua`} available={true} />
+                    <SalesTracker icon={<ListAlt />} number={routineFeedback.length} title="Số lượng phản hồi" profit={`Người dùng phản hồi về AI Routine`} available={true} />
                     <SalesTracker icon={<LocalMall />} number={completedMonthlyCount} title="Gói VIP đã mua" profit="Giao dịch hoàn tất tháng này" available={true} />
                     <SalesTracker icon={<PersonOutline />} number={monthlyRegister} title="Người dùng mới" profit="+10% so với tháng trước" available={true} />
                   </div>
@@ -383,7 +383,6 @@ export default function DashboardPage() {
           <div className="revenue-title">
             <div className="revenue-title-header">Doanh thu hàng {revenuePeriodLabel}</div>
             <div className="revenue-total-profit"><div className="profitValue">{logs.length-pendingCount}  /  {logs.length}</div><span>Hoàn Tất</span></div>
-            <div className="revenue-total-profit pending"><div className="profitValue">{pendingCount}  /  {logs.length}</div><span>Chưa Trả</span></div>
           </div>
           <div className="revenueProgress-card">
             <div className="revenueProgress-box">
@@ -432,13 +431,13 @@ export default function DashboardPage() {
           <div className="revenue-slider revenue-auto-slider" style={{
             "--width": "300px",
             "--height": "200px",
-            "--quantity": logs.length
+            "--quantity": logs.filter(log => log.paymentStatus === "Completed").length
           }}>
-            {logs.length === 0 ? (
+            {logs.filter(log => log.paymentStatus === "Completed").length === 0 ? (
               <div className="no-revenue-data">Không có dữ liệu cho giai đoạn này.</div>
             ) : (
               <div className="list">
-                {logs.map((log, i) => (
+                {logs.filter(log => log.paymentStatus === "Completed").map((log, i) => (
                   <div className="item" key={i} style={{ "--position": i + 1 }}>
                     <div className="revenue-card">
                       <div className="revenue-card-header">{log.userEmail}</div>

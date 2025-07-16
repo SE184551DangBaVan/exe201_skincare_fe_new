@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./SkincareSchedule.css";
-import { showLoading, updateToast } from "../../utils/toastUtils";
+import { showSuccess, showError, showLoading, updateToast } from "../../utils/toastUtils";
 import { useNavigate } from "react-router-dom";
 import RoutineReviewModal from "./RoutineReviewModal";
+import { ArrowForward, Close, KeyboardArrowRight } from '@mui/icons-material';
+
+import axios from "axios";
 
 const SkincareSchedule = () => {
   const [routine, setRoutine] = useState(null);
@@ -11,10 +14,52 @@ const SkincareSchedule = () => {
   const [loading, setLoading] = useState(true);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
+  const [closeBanner, setCloseBanner] = useState(true);
+  const [expandBanner, setExpandBanner] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/consultation");
   };
+
+  function submit(e) {
+    e.preventDefault();
+    const toastId = showLoading("Đang gửi đánh giá...");
+
+    const formData = new FormData();
+    formData.append("Message", message);
+
+    if (imageFile) {
+      formData.append("Image", imageFile);
+    }
+
+    axios
+      .post("https://skincareapp.somee.com/SkinCare/Routine/feedback", formData, {
+        headers: { Accept: "*/*" },
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data.message);
+          setSubmitted(true);
+          updateToast(toastId, "success", "Gửi đánh giá thành công");
+        } else {
+          const errMsg = "Đã có lỗi xảy ra. Hãy thử lại.";
+          setError(errMsg);
+          updateToast(toastId, "error", errMsg);
+        }
+      })
+      .catch((err) => {
+        console.error("Submission error:", err);
+        const errMsg = "Không thể gửi phản hồi.";
+        setError(errMsg);
+        updateToast(toastId, "error", errMsg);
+      });
+  }
 
   // Get current week dates
   const getCurrentWeekDates = () => {
@@ -609,6 +654,30 @@ const SkincareSchedule = () => {
           </table>
         </div>
       </div>
+      
+      <form onSubmit={submit} className={`reviewUsForm ${closeBanner ? "" : "open"}`}>
+        <div className="reviewUsTitle">Để lại đánh giá cho chúng tôi</div>
+        <label htmlFor="reviewUsimageUpload">Tải ảnh lên (tùy chọn)</label>
+        <input
+          className="reviewUsImageUpload"
+          id="imageUpload"
+          type="file"
+          accept="image/*"
+          onChange={(e) => setImageFile(e.target.files[0])}
+        />
+        <label htmlFor="reviewUsMessage">Tin nhắn của bạn</label>
+        <textarea
+          id="message"
+          value={message}
+          placeholder="Nhập tin nhắn của bạn"
+          onChange={(e) => setMessage(e.target.value.replace(/^\s+/, ''))}
+        />
+
+        <button type="submit">Gửi</button>
+        <div className='expandIconContainer'>
+            <KeyboardArrowRight className={`expandIcon ${expandBanner ? 'active' : ''}`} onClick={() => {setExpandBanner(!expandBanner); setCloseBanner(!closeBanner)}} />
+        </div>
+      </form>
     </div>
   );
 };

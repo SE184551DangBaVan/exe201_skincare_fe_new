@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { auth, provider } from "../../firebase";
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup, signOut } from 'firebase/auth';
 import { useAuth } from '../../features/Auth/useAuth';
 
 import { Box, Checkbox, FormControlLabel } from '@mui/material';
@@ -50,11 +50,12 @@ const LoginPage = ({accountAction}) => {
             navigate(response.role === "Admin" ? "/AdminPage/Dashboard" : "/profile");
           }, 100);
         }
-        else if (response.code === "ERR_NETWORK") { updateToast(toastId, "error", "Network Error. Please try again."); }
+        else if (response.code === "ERR_NETWORK") { updateToast(toastId, "error", "Network Error. Please try again."); await signOut(auth); }
       }
 
     } catch (error) {
       console.error("Đăng nhập bằng Google thất bại:", error);
+      await signOut(auth);
       updateToast(toastId, "error", "Đăng nhập bằng Google thất bại. Hãy thử lại.");
       setError("Đăng nhập thất bại. Hãy thử lại.");
     }

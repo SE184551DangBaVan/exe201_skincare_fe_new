@@ -87,12 +87,6 @@ const Sidebar = ({ selected }) => {
                                 <AccountBox className={selected === "Profile" ? 'morbinTime' : ''} /> Hồ sơ
                             </Link>
                         </li>
-                        <li>
-                            <Link spy={true} smooth={true} className={selected === "Leaderboard" ? 'selected' : ''} 
-                               onClick={() => navigate('/AdminPage/Leaderboard')} style={{ cursor: 'pointer' }} >
-                                <Leaderboard className={selected === "Leaderboard" ? 'morbinTime' : ''} /> Bảng xếp hạng
-                            </Link>
-                        </li>
                         <li onClick={() => setShowBlogDropdown(v => !v)}>
                             <div className={`sidebar-text ${showBlogDropdown ? "active" : ""}`} style={{ cursor: 'pointer' }}>
                                 <RateReview className={showBlogDropdown ? 'morbinTime' : ''} /> Quản lý blog
