@@ -117,7 +117,8 @@ function AppRoutes() {
             path="/profile"
             element={
               <ThemeProvider>
-                <Navbar selected={"profile"} index={3} /> <ProfilePage />
+                <Navbar selected={"profile"} index={3} />
+                <ProfilePage />
                 <Footer />
               </ThemeProvider>
             }
@@ -126,7 +127,8 @@ function AppRoutes() {
             path="/consultation"
             element={
               <ThemeProvider>
-                <Navbar selected={"consultation"} index={1} /> <AIConsultation />
+                <Navbar selected={"consultation"} index={1} />
+                <AIConsultation />
               </ThemeProvider>
             }
           />
@@ -134,7 +136,8 @@ function AppRoutes() {
             path="/schedule"
             element={
               <ThemeProvider>
-                <Navbar selected={"consultation"} index={1} /> <SkincareSchedule />
+                <Navbar selected={"consultation"} index={1} />
+                <SkincareSchedule />
               </ThemeProvider>
             }
           />
@@ -142,7 +145,8 @@ function AppRoutes() {
             path="/editprofile"
             element={
               <ThemeProvider>
-                <Navbar selected={"profile"} index={3} /> <EditProfilePage />
+                <Navbar selected={"profile"} index={3} />
+                <EditProfilePage />
                 <Footer />
               </ThemeProvider>
             }

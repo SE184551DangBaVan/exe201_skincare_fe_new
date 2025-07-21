@@ -113,7 +113,7 @@
 .statistaContainer .statTitle {
     max-width: 200px;
     text-align: left;
-    margin: 10px 0 0 40px;
+    margin: 20px 0 0 40px;
     font-size: 20px; font-weight: 600;
     color: black;
 }
@@ -133,12 +133,11 @@
   overflow-x: hidden;
   overflow-y: auto;
   padding-right: 10px;
-  border-right: 5px dotted #4b4b4ba5;
 }
 
 .countTrackerContainer .routine-feedbackContainer h2 {
   position: fixed;
-  top: 60px;
+  top: 65px;
   justify-self: center;
   background: linear-gradient(to bottom, #F7F7F7 60%, rgba(245, 245, 245, 0.6) , transparent 100%);
   width: 53%;
@@ -215,6 +214,70 @@
   color: #999;
   font-style: italic;
   padding: 12px;
+}
+
+.feedback-footer {
+  position: fixed;
+  pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  z-index: 20;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(188, 188, 188, 0.8);
+  transform: translate(-20px, -20px);
+  box-shadow: 0 0 20px rgba(255, 255, 255,  0.2),
+                0 0 60px rgba(255, 255, 255, 0.4),
+                0 0 100px rgba(255, 255, 255, 0.6),
+                0 0 140px rgba(255, 255, 255, 0.8),
+                0 0 180px rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  transition: all 0.08s linear;
+  animation: blobRadius 5s ease infinite, blobBackground 15s ease infinite;
+}
+
+.feedback-footer.open {
+  width: 220px;
+  height: 220px;
+  box-shadow: none;
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: translate(-50px, -200px);
+  border-radius: 0 0 12px 12px;
+  padding: 80px;
+  transition: all 0.4s ease;
+}
+
+.feedback-footer img {
+  max-height: 210px;
+  margin: 5px;
+  border-radius: 12px;
+}
+
+@keyframes blobRadius {
+  0%, 100% {
+    border-radius: 43% 77% 80% 40%/40% 40% 80% 80%;
+  }
+  20% {
+    border-radius: 47% 73% 61% 59%/47% 75% 45% 73%;
+  }
+  40% {
+    border-radius: 46% 74% 74% 46%/74% 58% 62% 46%;
+  }
+  60% {
+    border-radius: 47% 73% 61% 59%/40% 40% 80% 80%;
+  }
+  80% {
+    border-radius: 50% 70% 52% 68%/51% 61% 59% 69%;
+  }
+}
+@keyframes blobBackground {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .statistaContainer .trackerContainer {

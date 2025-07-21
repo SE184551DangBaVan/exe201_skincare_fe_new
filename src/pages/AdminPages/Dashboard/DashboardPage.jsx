@@ -34,9 +34,13 @@ export default function DashboardPage() {
 
   const [revenuePeriod, setRevenuePeriod] = useState("monthly");
   const [revenuePeriodLabel, setRevenuePeriodLabel] = useState("tháng");
+  const [feedbackImage, setFeedbackImage] = useState(null);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+
+  const [cursorShow, setCursorShow] = useState(false);
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
   const revenueMap = {
     "Hàng ngày": {
@@ -54,6 +58,15 @@ export default function DashboardPage() {
   };
 
   useMotionValueEvent(scrollYProgress, "change",);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -312,6 +325,9 @@ export default function DashboardPage() {
         <BGImage />
         <img src={skincareIcon2} alt="" className="misc2"/>
         <img src={skincareIcon3} alt="" className="misc3"/>
+        {cursorShow ? (<div className={`feedback-footer ${feedbackImage && 'open'}`} style={{left: `${cursorPos.x}px`, top: `${cursorPos.y}px`}}>
+          <img src={feedbackImage} alt=""/>
+        </div>) : (<></>)}
         <motion.div  className="dashBoardContainer"
               style={{y: position1, scale: size1, opacity: blurFilter1}}>
           <Header title="Trang quản trị" subtitle="Chào mừng bạn đến với bảng điều khiển" />
@@ -331,7 +347,7 @@ export default function DashboardPage() {
                 <div className="statTitle">Doanh số</div>
                 <span className="statSubTitle">Tổng quan doanh số</span>
                 <div className="countTrackerContainer">
-                  <div className="routine-feedbackContainer">
+                  <div className="routine-feedbackContainer" onMouseOver={() => setCursorShow(true)} onMouseOut={() => setCursorShow(false)}>
                     <h2>Phản hồi về AI Routine</h2>
                     <div className="routine-feedback-message-container">
                       {routineFeedback.length === 0 ? (
@@ -339,16 +355,16 @@ export default function DashboardPage() {
                       ) : (
                         routineFeedback.map((feedback, index) => (
                           <>
-                            <div key={feedback.id || index} className="feedback-card">
-                            <div className="feedback-header">
-                              <span className="feedback-username">{feedback.userName}</span>
-                              <span className="feedback-email">{feedback.userEmail}</span>
-                              <span className="feedback-message">{feedback.message}</span>
+                            <div key={feedback.id || index} className="feedback-card" onMouseOver={() => setFeedbackImage(feedback.imageUrl)} onMouseOut={() => setFeedbackImage(null)}>
+                              <div className="feedback-header">
+                                <span className="feedback-username">{feedback.userName}</span>
+                                <span className="feedback-email">{feedback.userEmail}</span>
+                                <span className="feedback-message">{feedback.message}</span>
+                              </div>
+                              <div className="feedback-date">
+                                  {new Date(feedback.createdAt).toLocaleString('vi-VN')}
+                              </div>
                             </div>
-                            <div className="feedback-date">
-                                {new Date(feedback.createdAt).toLocaleString('vi-VN')}
-                            </div>
-                          </div>
                           </>
                         ))
                       )}
